@@ -46,6 +46,13 @@ module.exports = {
           '^/emotion': '/'
         }
       },
+      '/flight/':{
+        target:'http://airinfo.market.alicloudapi.com/airInfos',
+        changeOrigin:true,
+        pathRewrite: {
+          '^/flight': '/'
+        }
+      }
     },
 
     // Various Dev Server settings

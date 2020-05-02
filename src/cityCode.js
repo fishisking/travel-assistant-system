@@ -1,0 +1,25 @@
+const cityCode = {
+    '北京':'BJS',
+    '郑州':'CGO',
+    '广州':'CAN',
+    '重庆':'CKG',
+    '成都':'CTU',
+    '海口':'HAK',
+    '呼和浩特':'HET',
+    '杭州':'HGH',
+    '哈尔滨':'HRB',
+    '上海':'PVG',
+    '昆明':'KMG',
+    '贵阳':'KWE',
+    '南京':'NKG',
+    '西安':'SIA',
+    '三亚':'SYX',
+    '深圳':'SZX',
+    '青岛':'TAO',
+    '天津':'TSN',
+    '乌鲁木齐':'URC',
+    '武汉':'WUH',
+    '厦门':'XMN',
+    '珠海':'ZUH'
+}
+export default cityCode;

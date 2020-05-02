@@ -17,6 +17,7 @@ import userPreference from '@/views/model/userPreference'
 import userBehaviourRecord from '@/views/model/userBehaviourRecord'
 import userInformation from '@/views/user/userInformation'
 import userInformationRecord from '@/views/model/userInformationRecord'
+import flightQuery from '@/views/travel/flightQuery/flightQuery'
 Vue.use(Router)
 export default new Router({
   mode: 'history',
@@ -66,6 +67,10 @@ export default new Router({
     {
       path:'/travel/placeCollection',
       component:placeCollection
+    },
+    {
+      path:'/travel/flightQuery',
+      component:flightQuery
     },
     {
       path:'/log/findLog',
