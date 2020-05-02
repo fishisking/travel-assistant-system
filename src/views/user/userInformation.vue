@@ -1,6 +1,7 @@
 <template>
   <div>
-    <el-form v-model="form" label-position="top">
+    <el-form v-model="form" class="user-information-form">
+      <div style="font-size:24px;">用户信息表单 </div>
       <el-form-item label="填写状态">
         <el-tag :type="(ifCompleted)==true?'success':'info'">{{(ifCompleted)==true?'已填写':'未填写'}}</el-tag>
       </el-form-item>
@@ -26,7 +27,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="旅游风格(推荐使用描述得到更准确的推荐,只可填写一次，不可修改)">
-        <el-radio-group v-model="form.style" @change="judgeStyle" :disabled="!updateStatus||this.form.style!=''">
+        <el-radio-group v-model="form.style" @change="judgeStyle" :disabled="!updateStatus||this.form.description!=''">
           <el-radio :label="1">自然风光陶醉者</el-radio>
           <el-radio :label="2">户外休闲享受者</el-radio>
           <el-radio :label="3">城市生活观光者</el-radio>
@@ -45,7 +46,7 @@
         <template v-else>
           <el-button @click="updateStatus = true" type="primary" >修改</el-button>
         </template>
-
+        <el-button @click="updateStatus = true">重置</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -177,5 +178,8 @@
 </script>
 
 <style scoped>
-
+.user-information-form{
+  background: #eee;
+  padding:20px 35px;
+}
 </style>

@@ -77,8 +77,8 @@
               <div slot="content">登录ID:{{this.$store.state.user_id}}<br>用户名:{{this.$store.state.user_name}}<br/>权限类型:{{formatPermission(this.$store.state.permission)}}</div>
               <el-link icon="el-icon-place" style="color:#606266;font-weight: 600">已登录</el-link>
             </el-tooltip>
-            <span class="drop-out-line"></span>
-            <el-link @click="dropOut" style="color:#909399" class="drop-out">退出</el-link>
+            <span class="drop-out-line" v-if="isLogin"></span>
+            <el-link @click="dropOut" style="color:#909399" class="drop-out" v-if="isLogin">退出</el-link>
           </div>
         </div>
       </el-aside>
