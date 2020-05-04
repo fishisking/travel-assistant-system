@@ -39,31 +39,19 @@
         <el-table-column type="expand">
           <template slot-scope="props">
             <el-form label-position="left" inline class="demo-table-expand">
-              <el-form-item label="商品名称">
-                <span>{{ props.row.name }}</span>
+              <el-form-item label="原价：" style="margin-right:25px;">
+                <span>{{ props.row.lowestPriceInfo.standardPrice }}</span>
               </el-form-item>
-              <el-form-item label="所属店铺">
-                <span>{{ props.row.shop }}</span>
+              <el-form-item label="折扣：" style="margin-right:25px;">
+                <span>{{ props.row.lowestPriceInfo.discount }}</span>
               </el-form-item>
-              <el-form-item label="商品 ID">
-                <span>{{ props.row.id }}</span>
-              </el-form-item>
-              <el-form-item label="店铺 ID">
-                <span>{{ props.row.shopId }}</span>
-              </el-form-item>
-              <el-form-item label="商品分类">
-                <span>{{ props.row.category }}</span>
-              </el-form-item>
-              <el-form-item label="店铺地址">
-                <span>{{ props.row.address }}</span>
-              </el-form-item>
-              <el-form-item label="商品描述">
-                <span>{{ props.row.desc }}</span>
+              <el-form-item label="折后价:" style="margin-right:25px;">
+                <span>{{ `${props.row.lowestPriceInfo.price} (含燃油附加费${props.row.lowestPriceInfo.oilFee}元和机场建设费${props.row.lowestPriceInfo.buildTax}元)`}}</span>
               </el-form-item>
             </el-form>
           </template>
         </el-table-column>
-        <el-table-column label="航班号" width="180" prop="flightNo"></el-table-column>
+        <el-table-column label="航班号" prop="flightNo"></el-table-column>
         <el-table-column label="航空公司" prop="airlineCompany"></el-table-column>
         <el-table-column label="出发/到达时间" prop="arTime">
           <template slot-scope="scope">
@@ -73,8 +61,13 @@
             </span>
           </template>
         </el-table-column>
-        <el-table-column label="准点率" width="100" prop="onTimeRate">
+        <el-table-column label="准点率" prop="onTimeRate">
           <template slot-scope="scope">{{scope.row.onTimeRate+'%'}}</template>
+        </el-table-column>
+        <el-table-column label="最低价格" prop="onTimeRate">
+          <template slot-scope="scope">
+            <span class="price">{{scope.row.lowestPriceInfo.price}}</span>
+          </template>
         </el-table-column>
       </el-table>
     </template>
@@ -150,5 +143,10 @@ export default {
   font-size: 12px;
   line-height: 18px;
   display: inline-block;
+  padding:4px;
+}
+.price{
+  font-size:14px;
+  font-weight: bold;
 }
 </style>
