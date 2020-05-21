@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://127.0.0.1:8088/keshe1/api', //访问地址
+        target: 'http://192.168.192.194:8088/keshe1/api', //访问地址
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/'
