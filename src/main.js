@@ -24,6 +24,7 @@ import moment from 'moment';
 import 'moment/locale/zh-cn';
 import VueCookies from 'vue-cookies';
 import common from '@/api/common'
+
 moment.locale('zh-cn');
 Vue.use(BaiduMap, {
   ak: 'LyYzakDwfjW6csEw300aEdFcnbU6kekf'  //这个地方是官方提供的ak密钥
