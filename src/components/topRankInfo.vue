@@ -2,7 +2,7 @@
   <div>
     <div v-loading="loading">
       <div class="top_container" style="font-size:12px">
-        <div class="top_container_header">
+        <div :class="{top_container_header:true,'top_container_header-darken':selected}">
           <span class="top_container_header_title">
             <span>{{TIME_LIST[showList[activeIndex]]+title}}</span>
             <span class="top_container_header_title bold">Top10</span>
@@ -46,9 +46,9 @@
 </template>
 <script>
 import echarts from "echarts";
-import { TIME_LIST,SCENE_CATEGORY } from '@/Constant'
+import { TIME_LIST, SCENE_CATEGORY } from "@/Constant";
 export default {
-  props: ["info","title","index","selected","name"],
+  props: ["info", "title", "index", "selected", "name"],
   TIME_LIST,
   data() {
     return {
@@ -61,27 +61,18 @@ export default {
       SCENE_CATEGORY
     };
   },
-  mounted(){
-	  console.log(SCENE_CATEGORY)
-  },
   methods: {
     handleCommand(command) {
       if (command.indexOf("switch") >= 0) {
         const reg = /^switchTo(.+)$/;
         const type = command.match(reg)[1].toLowerCase();
         this.activeIndex = this.showList.indexOf(type);
-        this.$emit('handleCommand',this.index,type,this.chartData)
+        this.$emit("handleCommand", this.index, type, this.chartData);
       } else {
-        const type = this.showList[this.activeIndex]
-        this.$emit('handleCommand',this.index,type,this.chartData,'draw')
-        /* this.loading = true;
-        setTimeout(() => {
-          this.chartVisible = true;
-          this.ininDraw();
-        }, 300); */
+        const type = this.showList[this.activeIndex];
+        this.$emit("handleCommand", this.index, type, this.chartData, "draw");
       }
-    },
-    
+    }
   },
   computed: {
     total() {
@@ -96,15 +87,23 @@ export default {
       return chartData;
     },
     otherTotal() {
-      const sum = this.info[this.showList[this.activeIndex]].list.reduce((total, current, index) => {
-        return total + current.value;
-      }, 0);
+      const sum = this.info[this.showList[this.activeIndex]].list.reduce(
+        (total, current, index) => {
+          return total + current.value;
+        },
+        0
+      );
       return this.total - sum;
     }
   }
 };
 </script>
 <style lang="less">
+.theme(@darken) {
+  @theme-color: darken(#eef8e6,@darken);
+  @theme-font-color: darken(#4fa609,@darken);
+  @theme-border-color: darken(#92ce5b,@darken);
+}
 .name {
   width: 120px;
   display: inline-block;
@@ -182,28 +181,34 @@ a {
   border-bottom: 1px solid #e1e1e1;
   color: #888;
 }
-.top_container {
+.top_container{
+  .theme(0%);
   border: 1px solid #d9d9d9;
-  border-top: 2px solid #92ce5b;
+  border-top: 2px solid @theme-border-color;
   width: 400px;
   background: #fff;
-  &_header {
-    background: #eef8e6;
-    line-height: 35px;
-    color: #4fa609;
-    padding: 0 12px;
-    .flex-row();
-    justify-content: space-between;
-    &_title {
-      font-size: 14px;
-    }
+  height: 100%;
+}
+.top_container_header {
+  .theme(0%);
+  background: @theme-color;
+  line-height: 35px;
+  color: @theme-font-color;
+  padding: 0 12px;
+  .flex-row();
+  justify-content: space-between;
+  &_title {
+    font-size: 14px;
   }
 }
 
-.top_container {
-  min-width: 300px;
-  height: 100%;
+.top_container_header-darken{
+  .theme(30%);
+  .top_container_header();
+  background:@theme-color;
+  color: @theme-font-color;
 }
+
 .other {
   padding-left: 20px;
   width: 132px;

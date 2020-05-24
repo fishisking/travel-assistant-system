@@ -46,7 +46,7 @@ export default {
 
       const option = {
         title: {
-          text: this.SCENE_CATEGORY[this.name].c1.slice(0,-2),
+          text: this.SCENE_CATEGORY[this.name].c2,
           left: "center"
         },
         tooltip: {
