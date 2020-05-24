@@ -40,7 +40,6 @@
           </li>
         </ul>
       </div>
-      <div class="pic2" ref="myChart" v-if="chartVisible"></div>
     </div>
   </div>
 </template>
@@ -76,7 +75,7 @@ export default {
   },
   computed: {
     total() {
-      return this.info.history.total;
+      return this.info[this.showList[this.activeIndex]].total;
     },
     chartData() {
       let chartData = this.info[this.showList[this.activeIndex]].list.slice(0);
@@ -98,7 +97,7 @@ export default {
   }
 };
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .theme(@darken) {
   @theme-color: darken(#eef8e6,@darken);
   @theme-font-color: darken(#4fa609,@darken);
@@ -149,7 +148,7 @@ a {
   overflow: hidden;
 }
 .i1 {
-  background: url("../assets/top.png") no-repeat -45px -2px;
+  background: url("../../assets/top.png") no-repeat -45px -2px;
   width: 15px;
   height: 22px;
   display: inline-block;

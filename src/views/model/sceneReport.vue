@@ -36,7 +36,7 @@
           title="热门兴趣景点" :name="sceneData.tableDataLists[1].name"
           @handleCommand="handleCommand"
           :selected="sceneData.params.selectedIndex===1"
-          :index="1"
+          :index="1"  
         ></topRankInfo>
         <topRankInfo
           :info="sceneData.tableDataLists[2].tableData"
@@ -52,12 +52,30 @@
       </div>
       <div class="header1">热门酒店信息</div>
       <div class="half_container">
-        <div class="half" style="background:pink">
-          <div class="half_content"></div>
-        </div>
-        <div class="half">
-          <div class="half_content" style="background:grey"></div>
-        </div>
+        <topRankInfoHotel
+          :info="hotelData.tableDataLists[0]"
+          title="热门访问酒店" :name="sceneData.tableDataLists[0].name"
+          @handleCommand="handleCommand"
+          :selected="sceneData.params.selectedIndex===0"
+          :index="0"
+        ></topRankInfoHotel>
+        <!-- <topRankInfoHotel
+          :info="sceneData.tableDataLists[2].tableData"
+          title="热门酒店" :name="sceneData.tableDataLists[1].name"
+          @handleCommand="handleCommand"
+          :selected="sceneData.params.selectedIndex===1"
+          :index="1"
+        ></topRankInfoHotel>
+        <topRankInfoHotel
+          :info="sceneData.tableDataLists[2].tableData"
+          title="热门酒店" :name="sceneData.tableDataLists[2].name"
+          @handleCommand="handleCommand"
+          :selected="sceneData.params.selectedIndex===2"
+          :index="2"
+        ></topRankInfoHotel> -->
+      </div>
+      <div class="half_container">
+        <hotel-bar class="pic2" :info="hotelData.tableDataLists[0]" :name="'123'"></hotel-bar>
       </div>
     </div>
   </div>
@@ -67,16 +85,20 @@
 import moment from "moment";
 import echarts from "echarts";
 import http from "@/api/index";
-import report from "@/components/report";
-import topRankInfo from "@/components/topRankInfo";
-import pie from "@/components/pie";
-import bar from "@/components/bar";
+import report from "@/components/analyze/report";
+import topRankInfo from "@/components/analyze/topRankInfo";
+import topRankInfoHotel from "@/components/analyze/topRankInfoHotel";
+import pie from "@/components/analyze/pie";
+import bar from "@/components/analyze/bar";
+import hotelBar from "@/components/analyze/hotelBar";
 export default {
   components: {
     report,
     topRankInfo,
     pie,
-    bar
+    bar,
+    topRankInfoHotel,
+    hotelBar
   },
   data() {
     return {
@@ -86,6 +108,69 @@ export default {
         end: ""
       },
       timeList: ["today", "week", "history"],
+      hotelData:{
+        params:{
+          selectedIndex: 0,   //被选择的是哪张表
+        },
+        tableDataLists:[
+          {
+            index:0,
+            name:'visit',
+            data:[
+              {
+                name:'轻住·西湖音乐喷泉公寓酒店',
+                frequency:146,
+                compare:+3,
+              },
+              {
+                name:'轻住·杭州天逅酒店',
+                frequency:82,
+                compare:-5,
+              },
+              {
+                name:'杭州途悦民宿东站店',
+                frequency:67,
+                compare:+23,
+              },
+              {
+                name:'星程杭州钱江世纪城利华路酒店',
+                frequency:65,
+                compare:+2,
+              },
+              {
+                name:'Zchic杭州美梦轻居酒店',
+                frequency:58,
+                compare:-25,
+              },
+              {
+                name:'桔子杭州梦想小镇酒店',
+                frequency:56,
+                compare:+2,
+              },
+              {
+                name:'全季杭州三墩西湖科技园酒店',
+                frequency:52,
+                compare:+1,
+              },
+              {
+                name:'杭州钱江新城庆春广场亚朵酒店',
+                frequency:51,
+                compare:+7,
+              },
+              {
+                name:'全季杭州转塘美院酒店',
+                frequency:49,
+                compare:+12,
+              },
+              {
+                name:'美豪丽致酒店(杭州西溪湿地科技城店)',
+                frequency:45,
+                compare:-5,
+              }
+            ]
+          }
+        ]
+      },
       sceneData: {
         params:{
           selectedIndex: 0,   //被选择的是哪张表
@@ -469,7 +554,7 @@ export default {
                 ]
               },
               week: {
-                total: 66,
+                total: 106,
                 list: [
                   {
                     name: "灵隐寺",
