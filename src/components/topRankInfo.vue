@@ -4,7 +4,7 @@
       <div class="top_container" style="font-size:12px">
         <div class="top_container_header">
           <span class="top_container_header_title">
-            <span>景点</span>
+            <span>{{TIME_LIST[showList[activeIndex]]+title}}</span>
             <span class="top_container_header_title bold">Top10</span>
           </span>
           <el-dropdown @command="handleCommand" trigger="click">
@@ -16,14 +16,14 @@
               <el-dropdown-item command="switchToToday">今日数据</el-dropdown-item>
               <el-dropdown-item command="switchToWeek">一周数据</el-dropdown-item>
               <el-dropdown-item command="switchToHistory">历史数据</el-dropdown-item>
-              <el-dropdown-item command="drawPie" divided :disabled="chartVisible">饼图</el-dropdown-item>
+              <el-dropdown-item command="draw" divided :disabled="selected">显示图表</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
         <div class="top_container_tableTitle flex-row" style="justify-content:space-between">
           <span style="padding-left:42px;">名称</span>
-          <span style="padding-left:75px;">访问次数</span>
-          <span style="padding-right:10px;">占所有景点访问次数比例</span>
+          <span style="padding-left:75px;">{{SCENE_CATEGORY[name].tt}}</span>
+          <span style="padding-right:10px;">{{SCENE_CATEGORY[name].tt2}}</span>
         </div>
         <ul>
           <li v-for="(item,index) in chartData" :key="index">
@@ -46,22 +46,23 @@
 </template>
 <script>
 import echarts from "echarts";
+import { TIME_LIST,SCENE_CATEGORY } from '@/Constant'
 export default {
-  props: ["info"],
+  props: ["info","title","index","selected","name"],
+  TIME_LIST,
   data() {
     return {
       showList: ["history", "today", "week"],
       activeIndex: 0,
       option: null,
       loading: false,
-      chartVisible: true
+      chartVisible: false,
+      TIME_LIST,
+      SCENE_CATEGORY
     };
   },
-  mounted() {
-    this.drawPie();
-  },
-  updated() {
-    //console.log(this.$refs);
+  mounted(){
+	  console.log(SCENE_CATEGORY)
   },
   methods: {
     handleCommand(command) {
@@ -69,82 +70,18 @@ export default {
         const reg = /^switchTo(.+)$/;
         const type = command.match(reg)[1].toLowerCase();
         this.activeIndex = this.showList.indexOf(type);
+        this.$emit('handleCommand',this.index,type,this.chartData)
       } else {
-        this.loading = true;
+        const type = this.showList[this.activeIndex]
+        this.$emit('handleCommand',this.index,type,this.chartData,'draw')
+        /* this.loading = true;
         setTimeout(() => {
           this.chartVisible = true;
           this.ininDraw();
-        }, 300);
+        }, 300); */
       }
     },
-    drawPie() {
-      const ref = this.$refs.myChart;
-      let myChart = echarts.init(ref);
-      const option = {
-        title: {
-          text: "热门景点占所有访问次数比例",
-          left: "center"
-        },
-        toolbox: {
-          show: true,
-          feature: {
-            saveAsImage: {},
-            myTool2: {
-              show: true,
-              title: "收起显示",
-              icon:
-                "M745.376 662.624L512 429.248l-233.376 233.376-45.248-45.248L512 338.752l278.624 278.624z",
-              onclick: () => {
-                this.chartVisible = false;
-              }
-            }
-          }
-        },
-        tooltip: {
-          trigger: "item",
-          formatter: "{a} <br/>{b}: {c} ({d}%)"
-        },
-        legend: {
-          orient: "vertical",
-          left: 10,
-          data: this.chartData.map(item => {
-            return item.name;
-          })
-        },
-        series: [
-          {
-            name: "所占比例",
-            type: "pie",
-            label: {
-              show: false,
-              position: "center"
-            },
-            emphasis: {
-              label: {
-                show: true,
-                fontSize: "30",
-                fontWeight: "bold"
-              }
-            },
-            labelLine: {
-              show: false
-            },
-            data: this.chartData
-          }
-        ]
-      };
-
-      // 绘制图表
-      myChart.setOption(option);
-    },
-    ininDraw() {
-      // 基于准备好的dom，初始化echarts实例
-      const ref = this.$refs.myChart;
-      this.$nextTick(() => {
-        this.drawPie();
-      });
-      this.loading = false;
-    }
+    
   },
   computed: {
     total() {
@@ -156,7 +93,6 @@ export default {
         name: "其他",
         value: this.otherTotal
       });
-      console.log(chartData)
       return chartData;
     },
     otherTotal() {
@@ -164,11 +100,6 @@ export default {
         return total + current.value;
       }, 0);
       return this.total - sum;
-    }
-  },
-  watch: {
-    chartData(newVal) {
-      this.$refs.myChart && this.drawPie();
     }
   }
 };
@@ -272,14 +203,6 @@ a {
 .top_container {
   min-width: 300px;
   height: 100%;
-}
-.pic2 {
-  background: #eef8e6;
-  height: 420px;
-  border: 1px solid #d9d9d9;
-  border-top: 2px solid #92ce5b;
-  width: 600px;
-  padding-top: 15px;
 }
 .other {
   padding-left: 20px;
