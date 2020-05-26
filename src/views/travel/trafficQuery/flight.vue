@@ -1,5 +1,10 @@
 <template>
-  <div class="demo">
+  <div
+    class="demo"
+    v-loading="loading"
+    element-loading-text="拼命加载中"
+    element-loading-spinner="el-icon-loading"
+  >
     <el-form :model="form" :inline="true">
       <el-form-item label="行程地点">
         <el-select placeholder="出发城市" v-model="form.arrive_code">
@@ -35,7 +40,7 @@
     </el-form>
     <hr />
     <template>
-      <el-table :data="dataList">
+      <el-table :data="dataList" v-if="dataList.length!==0">
         <el-table-column type="expand">
           <template slot-scope="props">
             <el-form label-position="left" inline class="demo-table-expand">
@@ -52,13 +57,13 @@
           </template>
         </el-table-column>
         <el-table-column label="航班号" prop="flightNo"></el-table-column>
-        <el-table-column label="航空公司" prop="airlineCompany"></el-table-column>
+        <el-table-column label="航空公司" prop="airlineCompany" width="400"></el-table-column>
         <el-table-column label="出发/到达时间" prop="arTime">
           <template slot-scope="scope">
             {{`${formatDate(scope.row.tkTime)} - ${formatDate(scope.row.arTime)}`}}
-            <span class="cost-time">
-                耗时:{{subtractTime(scope.row.tkTime,scope.row.arTime)}}
-            </span>
+            <span
+              class="cost-time"
+            >耗时:{{subtractTime(scope.row.tkTime,scope.row.arTime)}}</span>
           </template>
         </el-table-column>
         <el-table-column label="准点率" prop="onTimeRate">
@@ -86,7 +91,8 @@ export default {
         leave_code: "",
         date: new moment().format("YYYY-MM-DD")
       },
-      dataList: []
+      dataList: [],
+      loading: false
     };
   },
   computed: {
@@ -98,14 +104,16 @@ export default {
     }
   },
   methods: {
-    formatDate(date){
-        const dataReg = / \d{2}:\d{2}/ //将日期数据正则处理
-        return date.match(dataReg)[0]
+    formatDate(date) {
+      const dataReg = / \d{2}:\d{2}/; //将日期数据正则处理
+      return date.match(dataReg)[0];
     },
-    subtractTime(d1,d2){
-        const duration = moment.duration(moment(d2).diff(moment(d1)))
-        const result = duration.get('minutes')+'分钟'
-        return duration.get('hours')!==0?duration.get('hours')+'小时'+result:result
+    subtractTime(d1, d2) {
+      const duration = moment.duration(moment(d2).diff(moment(d1)));
+      const result = duration.get("minutes") + "分钟";
+      return duration.get("hours") !== 0
+        ? duration.get("hours") + "小时" + result
+        : result;
     },
     onSubmit() {
       const { arrive_code, leave_code } = this.form;
@@ -114,17 +122,28 @@ export default {
         leave_code,
         query_date: this.form.date
       };
+      this.loading = true;
       http.queryFlight(params).then(res => {
         if (res.errCode === 0) {
-          success(this);
+          if (res.flightInfos && res.flightInfos.length === 0) {
+            this.$message({
+              message: "本次查询无可用班次"
+            });
+          } else {
+            this.$message({
+              message: "查询成功",
+              type: "success"
+            });
+          }
           this.dataList = res.flightInfos;
+        } else {
+          this.$message.error("请求失败");
         }
-        console.log(res);
+        this.loading = false;
       });
     }
   },
-  created() {
-  }
+  created() {}
 };
 </script>
 <style scoped>
@@ -143,13 +162,13 @@ export default {
   font-size: 12px;
   line-height: 18px;
   display: inline-block;
-  padding:4px;
+  padding: 4px;
 }
-.price{
-  font-size:14px;
+.price {
+  font-size: 14px;
   font-weight: bold;
 }
-form{
-  padding-left:20px;
+form {
+  padding-left: 20px;
 }
 </style>

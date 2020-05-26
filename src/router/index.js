@@ -17,9 +17,10 @@ import userPreference from '@/views/model/userPreference'
 import userBehaviourRecord from '@/views/model/userBehaviourRecord'
 import userInformation from '@/views/user/userInformation'
 import userInformationRecord from '@/views/model/userInformationRecord'
-//import flightQuery from '@/views/travel/flightQuery/flightQuery'
-import flightQuery from '@/views/travel/trafficQuery/coach'
-import TrafficQuery from '@/views/travel/trafficQuery/index'
+import flightQuery from '@/views/travel/trafficQuery/flight'
+import coachQuery from '@/views/travel/trafficQuery/coach'
+import trainQuery from '@/views/travel/trafficQuery/train'
+import trafficQuery from '@/views/travel/trafficQuery/index'
 import sceneReport from '@/views/model/sceneReport'
 Vue.use(Router)
 export default new Router({
@@ -76,20 +77,14 @@ export default new Router({
       component:flightQuery
     },
     {
-      path:'/travel/trafficQuery/index',
-      component:TrafficQuery
-    },
-    {
-      path:'/travel/trafficQuery/coach',
-      component:flightQuery
-    },
-    {
-      path:'/travel/trafficQuery/train',
-      component:flightQuery
-    },
-    {
-      path:'/travel/trafficQuery/flight',
-      component:flightQuery
+      path:'/travel/trafficQuery',
+      component:trafficQuery,
+      children:[
+        {path:'',component:flightQuery},
+        {path:'coach',component:coachQuery},
+        {path:'flight',component:flightQuery},
+        {path:'train',component:trainQuery},
+      ]
     },
     {
       path:'/log/findLog',

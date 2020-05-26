@@ -45,31 +45,34 @@ export default {
           show:true,
           data: [
             {
-              name: "次数",
+              name: "访问次数",
               // 强制设置图形为圆。
               icon: "circle",
             },
             {
-              name: "昨天次数",
+              name: "与昨日相比",
               // 强制设置图形为圆。
               icon: "circle",
             }
           ]
         },
         tooltip: {},
-        /* markLine: {
-          name:'平均值',
-          yAxis:100
-        }, */
+        markLine: {
+          data:[{
+            yAxis:100,
+            name:'平均值'
+          }]
+        },
         dataset: {
           source: this.chartData
         },
         xAxis: {
+          show:false,
           type: "category",
           data: this.chartData.map(item => item.name)
         },
         yAxis: {},
-        series: [{ name:'次数',type: "bar" }, { name:'昨天次数',type: "bar" }]
+        series: [{ name:'访问次数',type: "bar" }, { name:'与昨日相比',type: "bar" }]
       };
       myChart.setOption(option);
     }

@@ -24,6 +24,7 @@ import moment from 'moment';
 import 'moment/locale/zh-cn';
 import VueCookies from 'vue-cookies';
 import common from '@/api/common'
+import './assets/icon/iconfont.css'
 
 moment.locale('zh-cn');
 Vue.use(BaiduMap, {

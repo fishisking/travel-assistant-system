@@ -1,0 +1,30 @@
+{
+  "id": "1844418",
+  "name": "el-icon",
+  "font_family": "iconfont",
+  "css_prefix_text": "el-icon-ali",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2076291",
+      "name": " 火车票",
+      "font_class": "huochepiao",
+      "unicode": "e89a",
+      "unicode_decimal": 59546
+    },
+    {
+      "icon_id": "2076297",
+      "name": " 机票",
+      "font_class": "jipiao",
+      "unicode": "e89c",
+      "unicode_decimal": 59548
+    },
+    {
+      "icon_id": "2076300",
+      "name": " 汽车票",
+      "font_class": "qichepiao",
+      "unicode": "e89d",
+      "unicode_decimal": 59549
+    }
+  ]
+}

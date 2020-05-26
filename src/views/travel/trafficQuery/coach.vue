@@ -18,6 +18,7 @@
     <hr />
     <template>
       <el-table
+        v-if="dataList.length!==0"
        :default-sort = "{prop: 'starttime', order: 'ascending'}"
         :data="isShow?filteredDataList:dataList"
         v-loading="loading"
