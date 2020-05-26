@@ -13,25 +13,32 @@
       <el-form-item>
         <el-button type="primary" @click="onSubmit">查询</el-button>
       </el-form-item>
+       <el-checkbox v-model="isShow" label="仅显示可用车次" border></el-checkbox>
     </el-form>
     <hr />
     <template>
       <el-table
-        :data="dataList"
+       :default-sort = "{prop: 'starttime', order: 'ascending'}"
+        :data="isShow?filteredDataList:dataList"
         v-loading="loading"
         element-loading-text="拼命加载中"
         element-loading-spinner="el-icon-loading"
       >
         <el-table-column label="出发站点" prop="startstation"></el-table-column>
         <el-table-column label="到达站点" prop="endstation"></el-table-column>
-        <el-table-column label="出发时间" prop="starttime"></el-table-column>
+        <el-table-column label="出发时间" prop="starttime" sortable>
+        </el-table-column>
         <el-table-column label="巴士类型" prop="bustype"></el-table-column>
         <el-table-column label="预计耗时" prop="distance"></el-table-column>
         <el-table-column label="价格" prop="price"></el-table-column>
         <el-table-column label="发车状态" prop="ticket">
-          <!-- <template slot-scope="scope">
-            <span class="price">{{scope.row.lowestPriceInfo.price}}</span>
-          </template>-->
+          <template slot-scope="scope">
+            <span>
+              <el-tag v-if="parseInt(scope.row.ticket)" type="success">{{'剩'+scope.row.ticket}}</el-tag>
+              <el-tag v-else-if="scope.row.ticket==='已发车'" type="warning">{{scope.row.ticket}}</el-tag>
+              <el-tag v-else type="danger">{{scope.row.ticket}}</el-tag>
+            </span>
+          </template>
         </el-table-column>
       </el-table>
     </template>
@@ -49,10 +56,18 @@ export default {
         start: "",
         end: ""
       },
+      isShow:false,
       loading: false,
       dataList: [],
       coachCityList
     };
+  },
+  computed:{
+    filteredDataList(){
+      return this.dataList.filter(item=>{
+        if(parseInt(item.ticket))return item;
+      })
+    }
   },
   methods: {
     onSubmit() {

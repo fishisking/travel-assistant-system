@@ -19,7 +19,7 @@ import userInformation from '@/views/user/userInformation'
 import userInformationRecord from '@/views/model/userInformationRecord'
 //import flightQuery from '@/views/travel/flightQuery/flightQuery'
 import flightQuery from '@/views/travel/trafficQuery/coach'
-
+import TrafficQuery from '@/views/travel/trafficQuery/index'
 import sceneReport from '@/views/model/sceneReport'
 Vue.use(Router)
 export default new Router({
@@ -74,6 +74,10 @@ export default new Router({
     {
       path:'/travel/flightQuery',
       component:flightQuery
+    },
+    {
+      path:'/travel/trafficQuery/index',
+      component:TrafficQuery
     },
     {
       path:'/travel/trafficQuery/coach',

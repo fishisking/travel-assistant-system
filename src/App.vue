@@ -31,7 +31,7 @@
                 <el-menu-item index="/travel/itinerary">我的行程单</el-menu-item>
                 <el-menu-item index="/travel/myCustomPlace">自定义地点</el-menu-item>
                 <el-menu-item index="/travel/placeCollection">地点收藏</el-menu-item>
-                <el-menu-item index="/travel/flightQuery">航班查询</el-menu-item>
+                <el-menu-item index="/travel/trafficQuery/index">交通查询</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="3">
