@@ -5,122 +5,122 @@
 const path = require('path')
 
 module.exports = {
-  dev: {
+    dev: {
 
-    // Paths
-    assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
-    proxyTable: {
-      '/api': {
-        target: 'http://192.168.192.194:8088/keshe1/api', //访问地址
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api': '/'
-        }
-      },
-      '/hotel': {
-        target: 'http://api01.idataapi.cn:8000/hotel/idataapi', //访问地址
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api': '/'
-        }
-      },
-      '/map': {
-        target: 'http://api.map.baidu.com/place/v2', //访问地址
-        changeOrigin: true,
-        pathRewrite: {
-          '^/map': '/'
-        }
-      },
-      '/weather/': {
-        target: 'https://api.jisuapi.com/weather/', //访问地址
-        changeOrigin: true,
-        pathRewrite: {
-          '^/weather': '/'
-        }
-      },
-      '/coach/': {
-        target: 'https://api.jisuapi.com/bus/', //访问地址
-        changeOrigin: true,
-        pathRewrite: {
-          '^/coach': '/'
-        }
-      },
-      '/train/': {
-        target: 'https://api.jisuapi.com/train/station2s', //访问地址
-        changeOrigin: true,
-        pathRewrite: {
-          '^/bus': '/'
-        }
-      },
-      '/emotion/': {
-        target: 'https://aip.baidubce.com/rpc/2.0/nlp/v1/sentiment_classify', //访问地址
-        changeOrigin: true,
-        pathRewrite: {
-          '^/emotion': '/'
-        }
-      },
-      '/flight/': {
-        target: 'http://airinfo.market.alicloudapi.com/airInfos',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/flight': '/'
-        }
-      }
+        // Paths
+        assetsSubDirectory: 'static',
+        assetsPublicPath: '/',
+        proxyTable: {
+            '/api': {
+                target: 'http://192.168.192.194:8088/keshe1/api', //访问地址
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/api': '/'
+                }
+            },
+            '/hotel': {
+                target: 'http://api01.idataapi.cn:8000/hotel/idataapi', //访问地址
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/api': '/'
+                }
+            },
+            '/map': {
+                target: 'http://api.map.baidu.com/place/v2', //访问地址
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/map': '/'
+                }
+            },
+            '/weather/': {
+                target: 'https://api.jisuapi.com/weather/', //访问地址
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/weather': '/'
+                }
+            },
+            '/coach/': {
+                target: 'https://api.jisuapi.com/bus/', //访问地址
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/coach': '/'
+                }
+            },
+            '/train/': {
+                target: 'https://api.jisuapi.com/train/', //访问地址
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/train': '/'
+                }
+            },
+            '/emotion/': {
+                target: 'https://aip.baidubce.com/rpc/2.0/nlp/v1/sentiment_classify', //访问地址
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/emotion': '/'
+                }
+            },
+            '/flight/': {
+                target: 'http://airinfo.market.alicloudapi.com/airInfos',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/flight': '/'
+                }
+            }
+        },
+
+        // Various Dev Server settings
+        host: 'localhost', // can be overwritten by process.env.HOST
+        port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+        autoOpenBrowser: false,
+        errorOverlay: true,
+        notifyOnErrors: true,
+        poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
+
+
+        /**
+         * Source Maps
+         */
+
+        // https://webpack.js.org/configuration/devtool/#development
+        devtool: 'cheap-module-eval-source-map',
+
+        // If you have problems debugging vue-files in devtools,
+        // set this to false - it *may* help
+        // https://vue-loader.vuejs.org/en/options.html#cachebusting
+        cacheBusting: true,
+
+        cssSourceMap: true
     },
 
-    // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
-    errorOverlay: true,
-    notifyOnErrors: true,
-    poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
+    build: {
+        // Template for index.html
+        index: path.resolve(__dirname, '../dist/index.html'),
 
+        // Paths
+        assetsRoot: path.resolve(__dirname, '../dist'),
+        assetsSubDirectory: 'static',
+        assetsPublicPath: '/',
 
-    /**
-     * Source Maps
-     */
+        /**
+         * Source Maps
+         */
 
-    // https://webpack.js.org/configuration/devtool/#development
-    devtool: 'cheap-module-eval-source-map',
+        productionSourceMap: true,
+        // https://webpack.js.org/configuration/devtool/#production
+        devtool: '#source-map',
 
-    // If you have problems debugging vue-files in devtools,
-    // set this to false - it *may* help
-    // https://vue-loader.vuejs.org/en/options.html#cachebusting
-    cacheBusting: true,
+        // Gzip off by default as many popular static hosts such as
+        // Surge or Netlify already gzip all static assets for you.
+        // Before setting to `true`, make sure to:
+        // npm install --save-dev compression-webpack-plugin
+        productionGzip: false,
+        productionGzipExtensions: ['js', 'css'],
 
-    cssSourceMap: true
-  },
-
-  build: {
-    // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
-
-    // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
-
-    /**
-     * Source Maps
-     */
-
-    productionSourceMap: true,
-    // https://webpack.js.org/configuration/devtool/#production
-    devtool: '#source-map',
-
-    // Gzip off by default as many popular static hosts such as
-    // Surge or Netlify already gzip all static assets for you.
-    // Before setting to `true`, make sure to:
-    // npm install --save-dev compression-webpack-plugin
-    productionGzip: false,
-    productionGzipExtensions: ['js', 'css'],
-
-    // Run the build command with an extra argument to
-    // View the bundle analyzer report after build finishes:
-    // `npm run build --report`
-    // Set to `true` or `false` to always turn it on or off
-    bundleAnalyzerReport: process.env.npm_config_report
-  }
+        // Run the build command with an extra argument to
+        // View the bundle analyzer report after build finishes:
+        // `npm run build --report`
+        // Set to `true` or `false` to always turn it on or off
+        bundleAnalyzerReport: process.env.npm_config_report
+    }
 }

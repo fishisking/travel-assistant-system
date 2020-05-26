@@ -33,7 +33,7 @@ export default {
 </script>
 <style scoped>
 .container{
-  width:980px;
+  width:1050px;
 }
 .text{
   margin-left: 5px;

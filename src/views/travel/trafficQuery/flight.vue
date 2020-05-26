@@ -67,7 +67,7 @@
           </template>
         </el-table-column>
         <el-table-column label="准点率" prop="onTimeRate">
-          <template slot-scope="scope">{{scope.row.onTimeRate+'%'}}</template>
+          <template slot-scope="scope">{{scope.row.onTimeRate!==0?+`${scope.row.onTimeRate}%`:'无'}}</template>
         </el-table-column>
         <el-table-column label="最低价格" prop="onTimeRate">
           <template slot-scope="scope">
