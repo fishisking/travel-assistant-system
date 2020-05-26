@@ -46,3 +46,19 @@ export const HOTEL_CATEGORY = {
         c2:'热门景点游记评论数量'
     }
 }
+
+
+export const coachCityList = [
+    '杭州',
+    '宁波',
+    '温州',
+    '嘉兴',
+    '湖州',
+    '绍兴',
+    '金华',
+    '衢州',
+    '舟山',
+    '台州',
+    '丽水',
+    '上海'
+]

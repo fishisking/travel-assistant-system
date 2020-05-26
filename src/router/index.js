@@ -17,7 +17,9 @@ import userPreference from '@/views/model/userPreference'
 import userBehaviourRecord from '@/views/model/userBehaviourRecord'
 import userInformation from '@/views/user/userInformation'
 import userInformationRecord from '@/views/model/userInformationRecord'
-import flightQuery from '@/views/travel/flightQuery/flightQuery'
+//import flightQuery from '@/views/travel/flightQuery/flightQuery'
+import flightQuery from '@/views/travel/trafficQuery/coach'
+
 import sceneReport from '@/views/model/sceneReport'
 Vue.use(Router)
 export default new Router({
@@ -74,6 +76,18 @@ export default new Router({
       component:flightQuery
     },
     {
+      path:'/travel/trafficQuery/coach',
+      component:flightQuery
+    },
+    {
+      path:'/travel/trafficQuery/train',
+      component:flightQuery
+    },
+    {
+      path:'/travel/trafficQuery/flight',
+      component:flightQuery
+    },
+    {
       path:'/log/findLog',
       component:findLog
     },
@@ -119,6 +133,7 @@ export default new Router({
     {
       path:'/model/sceneReport',
       component:sceneReport
-    }
+    },
+
   ]
 })

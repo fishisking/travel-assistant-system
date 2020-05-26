@@ -393,12 +393,26 @@ export default {
         },
         method: 'post',
         params,
-        url:'http://airinfo.market.alicloudapi.com/airInfos'
+        url: 'http://airinfo.market.alicloudapi.com/airInfos'
       }).then((res) => {
         resolve(res.data);
       }).catch((error) => {
         reject(error)
       })
+    })
+  },
+  queryCoach(params) {
+    const data = { ...params, appkey: weatherConf.appkey }
+    return new Promise((resolve, reject) => {
+      axios.get('/coach/city2c', {
+        params: data
+      })
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((error) => {
+          reject(error)
+        })
     })
   }
 }

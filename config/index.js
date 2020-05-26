@@ -32,23 +32,37 @@ module.exports = {
           '^/map': '/'
         }
       },
-      '/weather/':{
-          target: 'https://api.jisuapi.com/weather/', //访问地址
-          changeOrigin: true,
-          pathRewrite: {
-            '^/weather': '/'
-          }
+      '/weather/': {
+        target: 'https://api.jisuapi.com/weather/', //访问地址
+        changeOrigin: true,
+        pathRewrite: {
+          '^/weather': '/'
+        }
       },
-      '/emotion/':{
+      '/coach/': {
+        target: 'https://api.jisuapi.com/bus/', //访问地址
+        changeOrigin: true,
+        pathRewrite: {
+          '^/coach': '/'
+        }
+      },
+      '/train/': {
+        target: 'https://api.jisuapi.com/train/station2s', //访问地址
+        changeOrigin: true,
+        pathRewrite: {
+          '^/bus': '/'
+        }
+      },
+      '/emotion/': {
         target: 'https://aip.baidubce.com/rpc/2.0/nlp/v1/sentiment_classify', //访问地址
         changeOrigin: true,
         pathRewrite: {
           '^/emotion': '/'
         }
       },
-      '/flight/':{
-        target:'http://airinfo.market.alicloudapi.com/airInfos',
-        changeOrigin:true,
+      '/flight/': {
+        target: 'http://airinfo.market.alicloudapi.com/airInfos',
+        changeOrigin: true,
         pathRewrite: {
           '^/flight': '/'
         }

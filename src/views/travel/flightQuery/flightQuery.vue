@@ -149,4 +149,7 @@ export default {
   font-size:14px;
   font-weight: bold;
 }
+form{
+  padding-left:20px;
+}
 </style>
