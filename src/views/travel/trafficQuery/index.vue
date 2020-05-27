@@ -8,13 +8,13 @@
     </el-tab-pane>
     <el-tab-pane name="train">
       <span slot="label">
-        <i class="el-icon-aliqichepiao" ></i><router-link to="/travel/trafficQuery/train" class="text">查询高铁火车票</router-link>
+        <i class="el-icon-alihuochepiao" ></i><router-link to="/travel/trafficQuery/train" class="text">查询高铁火车票</router-link>
       </span>
       <router-view></router-view>
     </el-tab-pane>
     <el-tab-pane name="coach">
       <span slot="label">
-        <i class="el-icon-alihuochepiao"></i><router-link to="/travel/trafficQuery/coach" class="text">查询汽车票</router-link>
+        <i class="el-icon-aliqichepiao"></i><router-link to="/travel/trafficQuery/coach" class="text">查询汽车票</router-link>
       </span>
       <router-view></router-view>
     </el-tab-pane>

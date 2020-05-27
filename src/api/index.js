@@ -419,7 +419,7 @@ export default {
     queryTrain(params) {
         const data = { appkey: weatherConf.appkey, ...params }
         return new Promise((resolve, reject) => {
-            axios.get('/train/station2s', {
+            axios.get('/train/ticket', {
                     params: data
                 })
                 .then((res) => {

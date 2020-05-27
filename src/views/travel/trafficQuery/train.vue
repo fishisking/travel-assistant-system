@@ -44,13 +44,24 @@
       >
         <el-table-column label="车次" prop="trainno"></el-table-column>
         <el-table-column label="类型" prop="type"></el-table-column>
-        <el-table-column label="出发站点" prop="station"></el-table-column>
-        <el-table-column label="到达站点" prop="endstation"></el-table-column>
+        <el-table-column label="出发/到达站点">
+          <template slot-scope="scope">
+            <div class="flex-column">
+              <span class="flex-row">
+                <i class="icon-start"></i>
+                <strong>{{scope.row.station}}</strong>
+              </span>
+              <span class="flex-row">
+                <i :class="scope.row.isend===1?'icon-end':'icon-pass'"></i>
+                <strong>{{scope.row.endstation}}</strong>
+              </span>
+            </div>
+          </template>
+        </el-table-column>
         <el-table-column label="出发时间" prop="departuretime" sortable></el-table-column>
         <el-table-column label="到达时间" prop="arrivaltime"></el-table-column>
         <el-table-column label="用时" prop="costtime" sortable></el-table-column>
         <el-table-column label="距离" prop="distance" sortable></el-table-column>
-        <el-table-column label="是否终点" prop="isend"></el-table-column>
         <el-table-column label="预计耗时" prop="arrivaltime"></el-table-column>
         <!-- <el-table-column label="发车状态" prop="ticket">
           <template slot-scope="scope">
@@ -62,6 +73,7 @@
           </template>
         </el-table-column>-->
       </el-table>
+      
     </template>
   </div>
 </template>
@@ -74,10 +86,10 @@ export default {
   data() {
     return {
       form: {
-        start: "",
-        end: "",
-        date: "",
-        ishigh: 0,
+        start: "北京",
+        end: "杭州",
+        date: "2020-05-27",
+        ishigh: 0
       },
       loading: false,
       dataList: []
@@ -95,7 +107,7 @@ export default {
     onSubmit() {
       this.loading = true;
       http.queryTrain(this.form).then(res => {
-          console.log(res)
+        console.log(res);
         if (res.status === 200) {
           if (res.data.result) {
             this.$message({
@@ -121,7 +133,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style lang="less" scoped>
 .demo {
   height: 100%;
   width: 100%;
@@ -131,19 +143,41 @@ export default {
   display: inline-block;
   text-align: center;
 }
-.cost-time {
-  background: #f56c6c;
-  color: #fff;
-  font-size: 12px;
-  line-height: 18px;
-  display: inline-block;
-  padding: 4px;
-}
-.price {
-  font-size: 14px;
-  font-weight: bold;
-}
 form {
   padding-left: 20px;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.flex-row{
+  display: flex;
+  flex-direction: row; 
+  align-items: flex-end;
+  strong{
+    font-size:12px;
+    line-height: 12px;
+    color:#333;
+  }
+}
+.icon-basic{
+  height: 16px;
+  line-height: 18px;
+  overflow: hidden;
+  width:16px;
+  display: inline-block;
+  background: url("../../../assets/train.png") no-repeat;
+}
+.icon-pass {
+  .icon-basic();
+  background-position: 0 -446px;
+}
+.icon-start {
+  .icon-basic();
+  background-position: 0 -546px;
+}
+.icon-end {
+  .icon-basic();
+  background-position: 0 -496px;
 }
 </style>
