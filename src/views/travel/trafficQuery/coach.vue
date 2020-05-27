@@ -1,5 +1,10 @@
 <template>
-  <div class="demo">
+  <div
+    class="demo"
+    v-loading="loading"
+    element-loading-text="拼命加载中"
+    element-loading-spinner="el-icon-loading"
+  >
     <el-form :model="form" :inline="true">
       <el-form-item label="行程地点">
         <el-select placeholder="出发城市" v-model="form.start">
@@ -13,22 +18,17 @@
       <el-form-item>
         <el-button type="primary" @click="onSubmit">查询</el-button>
       </el-form-item>
-       <el-checkbox v-model="isShow" label="仅显示可用车次" border></el-checkbox>
+      <el-checkbox v-model="isShow" label="仅显示可用车次" border></el-checkbox>
     </el-form>
     <hr />
-    <template>
+    <template v-if="dataList.length!==0">
       <el-table
-        v-if="dataList.length!==0"
-       :default-sort = "{prop: 'starttime', order: 'ascending'}"
+        :default-sort="{prop: 'starttime', order: 'ascending'}"
         :data="isShow?filteredDataList:dataList"
-        v-loading="loading"
-        element-loading-text="拼命加载中"
-        element-loading-spinner="el-icon-loading"
       >
         <el-table-column label="出发站点" prop="startstation"></el-table-column>
         <el-table-column label="到达站点" prop="endstation"></el-table-column>
-        <el-table-column label="出发时间" prop="starttime" sortable>
-        </el-table-column>
+        <el-table-column label="出发时间" prop="starttime" sortable></el-table-column>
         <el-table-column label="巴士类型" prop="bustype"></el-table-column>
         <el-table-column label="预计耗时" prop="distance"></el-table-column>
         <el-table-column label="价格" prop="price"></el-table-column>
@@ -57,44 +57,47 @@ export default {
         start: "",
         end: ""
       },
-      isShow:false,
+      isShow: false,
       loading: false,
       dataList: [],
       coachCityList
     };
   },
-  computed:{
-    filteredDataList(){
-      return this.dataList.filter(item=>{
-        if(parseInt(item.ticket))return item;
-      })
+  computed: {
+    filteredDataList() {
+      return this.dataList.filter(item => {
+        if (parseInt(item.ticket)) return item;
+      });
     }
   },
   methods: {
     onSubmit() {
       this.loading = true;
-      http.queryCoach(this.form).then(res => {
-        if (res.status === 200) {
-          if (res.data.result) {
-            this.$message({
-              message: "查询成功",
-              type:'success'
-            });
-            this.dataList = res.data.result;
+      http
+        .queryCoach(this.form)
+        .then(res => {
+          if (res.status === 200) {
+            if (res.data.result) {
+              this.$message({
+                message: "查询成功",
+                type: "success"
+              });
+              this.dataList = res.data.result;
+            } else {
+              this.$message({
+                message: "本次查询无可用班次"
+              });
+            }
           } else {
             this.$message({
-              message: "本次查询无可用班次"
+              type: "error",
+              message: "查询出错"
             });
           }
-        } else {
-          this.$message({
-            type: "error",
-            message: "查询出错"
-          });
-        }
-      }).then(()=>{
-        this.loading = false;
-      })
+        })
+        .then(() => {
+          this.loading = false;
+        });
     }
   }
 };

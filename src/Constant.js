@@ -1,49 +1,49 @@
 export const TIME_LIST = {
-    'week':'一周',
-    'month':'一月',
-    'today':'今日',
-    'history':'历史'
+    'week': '一周',
+    'month': '一月',
+    'today': '今日',
+    'history': '历史'
 }
 
 export const SCENE_CATEGORY = {
-    'visit':{
-        tt:'访问次数',
-        tt2:'占所有景点访问次数比例',
-        c1:'热门景点访问次数占所有访问人次比例',
-        c2:'热门景点访问人次数'
+    'visit': {
+        tt: '访问次数',
+        tt2: '占所有景点访问次数比例',
+        c1: '热门景点访问次数占所有访问人次比例',
+        c2: '热门景点访问人次数'
     },
-    'interest':{
-        tt:'感兴趣人数',
-        tt2:'占所有网站注册用户比例',
-        c1:'热门景点感兴趣人数占所有注册用户比例',
-        c2:'热门景点感兴趣用户人数'
+    'interest': {
+        tt: '感兴趣人数',
+        tt2: '占所有网站注册用户比例',
+        c1: '热门景点感兴趣人数占所有注册用户比例',
+        c2: '热门景点感兴趣用户人数'
     },
-    'comment':{
-        tt:'评论次数',
-        tt2:'占所有游记评论次数比例',
-        c1:'热门景点评论次数占所有游记评论次数比例',
-        c2:'热门景点游记评论数量'
+    'comment': {
+        tt: '评论次数',
+        tt2: '占所有游记评论次数比例',
+        c1: '热门景点评论次数占所有游记评论次数比例',
+        c2: '热门景点游记评论数量'
     }
 }
 
 export const HOTEL_CATEGORY = {
-    'visit':{
-        tt:'访问次数',
-        tt2:'与昨日相比',
-        c1:'热门景点访问次数占所有访问人次比例',
-        c2:'热门景点访问人次数'
+    'visit': {
+        tt: '访问次数',
+        tt2: '与昨日相比',
+        c1: '热门景点访问次数占所有访问人次比例',
+        c2: '热门景点访问人次数'
     },
-    'interest':{
-        tt:'感兴趣人数',
-        tt2:'占所有网站注册用户比例',
-        c1:'热门景点感兴趣人数占所有注册用户比例',
-        c2:'热门景点感兴趣用户人数'
+    'interest': {
+        tt: '感兴趣人数',
+        tt2: '占所有网站注册用户比例',
+        c1: '热门景点感兴趣人数占所有注册用户比例',
+        c2: '热门景点感兴趣用户人数'
     },
-    'comment':{
-        tt:'评论次数',
-        tt2:'占所有游记评论次数比例',
-        c1:'热门景点评论次数占所有游记评论次数比例',
-        c2:'热门景点游记评论数量'
+    'comment': {
+        tt: '评论次数',
+        tt2: '占所有游记评论次数比例',
+        c1: '热门景点评论次数占所有游记评论次数比例',
+        c2: '热门景点游记评论数量'
     }
 }
 
@@ -61,4 +61,175 @@ export const coachCityList = [
     '台州',
     '丽水',
     '上海'
+]
+
+export const TRAIN_TYPES = {
+    D: '动车',
+    Z: '直达',
+    T: '特快',
+    G: '高铁',
+    K: '快速',
+    T: '特快'
+}
+export const trains = [
+    {
+        "trainno": "G45",
+        "type": "G",
+        "typename": "高铁",
+        "station": "北京南",
+        "endstation": "杭州东",
+        "departuretime": "15:25",
+        "arrivaltime": "21:23",
+        "costtime": "5小时58分",
+        "trainno12306": "",
+        "distance": 1279,
+        "day": 1,
+        "isend": 0,
+        "sequenceno": 1,
+        "priceed": 538.5,
+        "priceyd": 907,
+        "pricesw": 1701,
+        "pricetd": "-",
+        "pricerz": "-",
+        "priceyz": "-",
+        "pricegr1": "-",
+        "pricegr2": "-",
+        "pricerw1": "-",
+        "pricerw2": "-",
+        "priceyw1": "-",
+        "priceyw2": "-",
+        "priceyw3": "-",
+        "pricewz": "-",
+        "priceqt": "-",
+        "pricedw": "-",
+        "pricedw1": "-"
+    },
+    {
+        "trainno": "G37",
+        "type": "G",
+        "typename": "高铁",
+        "station": "北京南",
+        "endstation": "杭州东",
+        "departuretime": "16:05",
+        "arrivaltime": "22:07",
+        "costtime": "6小时2分",
+        "trainno12306": "",
+        "distance": 1279,
+        "day": 1,
+        "isend": 1,
+        "sequenceno": 1,
+        "priceed": 538.5,
+        "priceyd": 907,
+        "pricesw": 1701,
+        "pricetd": "-",
+        "pricerz": "-",
+        "priceyz": "-",
+        "pricegr1": "-",
+        "pricegr2": "-",
+        "pricerw1": "-",
+        "pricerw2": "-",
+        "priceyw1": "-",
+        "priceyw2": "-",
+        "priceyw3": "-",
+        "pricewz": "-",
+        "priceqt": "-",
+        "pricedw": "-",
+        "pricedw1": "-"
+    },
+    {
+        "trainno": "Z281",
+        "type": "Z",
+        "typename": "直达特快",
+        "station": "北京",
+        "endstation": "杭州",
+        "departuretime": "19:10",
+        "arrivaltime": "12:23",
+        "costtime": "17小时13分",
+        "trainno12306": "",
+        "distance": 1616,
+        "day": 2,
+        "isend": 1,
+        "sequenceno": 8,
+        "priceyz": 192,
+        "priceyw1": 328,
+        "pricerw1": 515,
+        "pricesw": "-",
+        "pricetd": "-",
+        "pricerz": "-",
+        "pricegr1": "-",
+        "pricegr2": "-",
+        "pricerw2": "-",
+        "priceyw2": "-",
+        "priceyw3": "-",
+        "priceyd": "-",
+        "priceed": "-",
+        "pricewz": "-",
+        "priceqt": "-",
+        "pricedw": "-",
+        "pricedw1": "-"
+    },
+    {
+        "trainno": "D717",
+        "type": "D",
+        "typename": "动车",
+        "station": "北京",
+        "endstation": "杭州",
+        "departuretime": "19:16",
+        "arrivaltime": "08:47",
+        "costtime": "13小时31分",
+        "trainno12306": "",
+        "distance": 1633,
+        "day": 2,
+        "isend": 1,
+        "sequenceno": 1,
+        "priceed": 302,
+        "priceyw1": 454,
+        "pricerw1": 574,
+        "pricesw": "-",
+        "pricetd": "-",
+        "pricerz": "-",
+        "priceyz": "-",
+        "pricegr1": "-",
+        "pricegr2": "-",
+        "pricerw2": "-",
+        "priceyw2": "-",
+        "priceyw3": "-",
+        "priceyd": "-",
+        "pricewz": "-",
+        "priceqt": "-",
+        "pricedw": "-",
+        "pricedw1": "-"
+    },
+    {
+        "trainno": "K101",
+        "type": "K",
+        "typename": "快速",
+        "station": "北京",
+        "endstation": "杭州",
+        "departuretime": "23:20",
+        "arrivaltime": "20:24",
+        "costtime": "21小时4分",
+        "trainno12306": "",
+        "distance": 1633,
+        "day": 2,
+        "isend": 0,
+        "sequenceno": 1,
+        "priceyz": 189.5,
+        "priceyw1": 322.5,
+        "pricerw1": 504.5,
+        "pricesw": "-",
+        "pricetd": "-",
+        "pricerz": "-",
+        "pricegr1": "-",
+        "pricegr2": "-",
+        "pricerw2": "-",
+        "priceyw2": "-",
+        "priceyw3": "-",
+        "priceyd": "-",
+        "priceed": "-",
+        "pricewz": "-",
+        "priceqt": "-",
+        "pricedw": "-",
+        "pricedw1": "-"
+    }
 ]

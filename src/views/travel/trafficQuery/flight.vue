@@ -61,13 +61,11 @@
         <el-table-column label="出发/到达时间" prop="arTime">
           <template slot-scope="scope">
             {{`${formatDate(scope.row.tkTime)} - ${formatDate(scope.row.arTime)}`}}
-            <span
-              class="cost-time"
-            >耗时:{{subtractTime(scope.row.tkTime,scope.row.arTime)}}</span>
+            <span class="cost-time">耗时:{{subtractTime(scope.row.tkTime,scope.row.arTime)}}</span>
           </template>
         </el-table-column>
         <el-table-column label="准点率" prop="onTimeRate">
-          <template slot-scope="scope">{{scope.row.onTimeRate!==0?+`${scope.row.onTimeRate}%`:'无'}}</template>
+          <template slot-scope="scope">{{scope.row.onTimeRate!=0?+`${scope.row.onTimeRate}%`:'无'}}</template>
         </el-table-column>
         <el-table-column label="最低价格" prop="onTimeRate">
           <template slot-scope="scope">
