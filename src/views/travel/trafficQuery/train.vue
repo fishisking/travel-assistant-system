@@ -127,9 +127,9 @@ export default {
   data() {
     return {
       form: {
-        start: "北京",
-        end: "杭州",
-        date: "2020-05-27",
+        start: "",
+        end: "",
+        date: "",
         ishigh: 0
       },
       ishigh:false,

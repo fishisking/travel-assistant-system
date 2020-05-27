@@ -71,8 +71,7 @@ export const TRAIN_TYPES = {
     K: '快速',
     T: '特快'
 }
-export const trains = [
-    {
+export const trains = [{
         "trainno": "G45",
         "type": "G",
         "typename": "高铁",
@@ -231,5 +230,553 @@ export const trains = [
         "priceqt": "-",
         "pricedw": "-",
         "pricedw1": "-"
+    }
+]
+
+export const flights = [{
+        "airlineCompany": "中国南方航空股份有限公司",
+        "leaveBuilding": "T2航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 11:10:00",
+        "tkTime": "2020-05-28 08:00:00",
+        "lowestPriceInfo": {
+            "discount": 6.1,
+            "price": 1550,
+            "standardPrice": 2540,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "CZ3101",
+        "onTimeRate": 100,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "中国南方航空股份有限公司",
+        "leaveBuilding": "T2航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 12:10:00",
+        "tkTime": "2020-05-28 09:00:00",
+        "lowestPriceInfo": {
+            "discount": 7,
+            "price": 1790,
+            "standardPrice": 2540,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "CZ3099",
+        "onTimeRate": 100,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "中国南方航空股份有限公司",
+        "leaveBuilding": "T2航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 12:30:00",
+        "tkTime": "2020-05-28 09:20:00",
+        "lowestPriceInfo": {
+            "discount": 6.1,
+            "price": 1550,
+            "standardPrice": 2540,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "CZ5414",
+        "onTimeRate": 0,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "中国国际航空股份有限公司",
+        "leaveBuilding": "T1航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 12:45:00",
+        "tkTime": "2020-05-28 09:35:00",
+        "lowestPriceInfo": {
+            "discount": 5.4,
+            "price": 1360,
+            "standardPrice": 2540,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "CA1380",
+        "onTimeRate": 96.67,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T3航站楼"
+    },
+    {
+        "airlineCompany": "中国南方航空股份有限公司",
+        "leaveBuilding": "T2航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 13:10:00",
+        "tkTime": "2020-05-28 10:00:00",
+        "lowestPriceInfo": {
+            "discount": 6.1,
+            "price": 1550,
+            "standardPrice": 2540,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "CZ3121",
+        "onTimeRate": 96.67,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "中国东方航空股份有限公司",
+        "leaveBuilding": "T1航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 14:55:00",
+        "tkTime": "2020-05-28 11:50:00",
+        "lowestPriceInfo": {
+            "discount": 7,
+            "price": 1615,
+            "standardPrice": 2310,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "MU5182",
+        "onTimeRate": 100,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "中国南方航空股份有限公司",
+        "leaveBuilding": "T2航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 15:05:00",
+        "tkTime": "2020-05-28 12:00:00",
+        "lowestPriceInfo": {
+            "discount": 6.1,
+            "price": 1550,
+            "standardPrice": 2540,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "CZ3103",
+        "onTimeRate": 96.67,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "厦门航空有限公司",
+        "leaveBuilding": "T2航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 15:25:00",
+        "tkTime": "2020-05-28 12:35:00",
+        "lowestPriceInfo": {
+            "discount": 5.1,
+            "price": 1300,
+            "standardPrice": 2540,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "MF8188",
+        "onTimeRate": 0,
+        "arrivePort": "大兴国际机场",
+        "arriveBuilding": "航站楼"
+    },
+    {
+        "airlineCompany": "中国南方航空股份有限公司",
+        "leaveBuilding": "T2航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 15:25:00",
+        "tkTime": "2020-05-28 12:35:00",
+        "lowestPriceInfo": {
+            "discount": 5.4,
+            "price": 1370,
+            "standardPrice": 2540,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "CZ5024",
+        "onTimeRate": 0,
+        "arrivePort": "大兴国际机场",
+        "arriveBuilding": "航站楼"
+    },
+    {
+        "airlineCompany": "海南航空股份有限公司",
+        "leaveBuilding": "T1航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 16:05:00",
+        "tkTime": "2020-05-28 12:55:00",
+        "lowestPriceInfo": {
+            "discount": 4.8,
+            "price": 1110,
+            "standardPrice": 2310,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "HU7806",
+        "onTimeRate": 96.67,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "中国国际航空股份有限公司",
+        "leaveBuilding": "T1航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 16:50:00",
+        "tkTime": "2020-05-28 13:40:00",
+        "lowestPriceInfo": {
+            "discount": 5.4,
+            "price": 1360,
+            "standardPrice": 2540,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "CA1322",
+        "onTimeRate": 96.67,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T3航站楼"
+    },
+    {
+        "airlineCompany": "中国南方航空股份有限公司",
+        "leaveBuilding": "T2航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 17:10:00",
+        "tkTime": "2020-05-28 14:00:00",
+        "lowestPriceInfo": {
+            "discount": 6.1,
+            "price": 1550,
+            "standardPrice": 2540,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "CZ3109",
+        "onTimeRate": 100,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "中国国际航空股份有限公司",
+        "leaveBuilding": "T1航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 18:50:00",
+        "tkTime": "2020-05-28 15:40:00",
+        "lowestPriceInfo": {
+            "discount": 5.4,
+            "price": 1360,
+            "standardPrice": 2540,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "CA1316",
+        "onTimeRate": 93.33,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T3航站楼"
+    },
+    {
+        "airlineCompany": "中国南方航空股份有限公司",
+        "leaveBuilding": "T2航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 19:10:00",
+        "tkTime": "2020-05-28 16:00:00",
+        "lowestPriceInfo": {
+            "discount": 6.1,
+            "price": 1550,
+            "standardPrice": 2540,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "CZ3115",
+        "onTimeRate": 100,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "海南航空股份有限公司",
+        "leaveBuilding": "T1航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 20:20:00",
+        "tkTime": "2020-05-28 17:00:00",
+        "lowestPriceInfo": {
+            "discount": 5.4,
+            "price": 1240,
+            "standardPrice": 2310,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "HU7808",
+        "onTimeRate": 93.33,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "中国国际航空股份有限公司",
+        "leaveBuilding": "T1航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 21:50:00",
+        "tkTime": "2020-05-28 18:40:00",
+        "lowestPriceInfo": {
+            "discount": 5.2,
+            "price": 1330,
+            "standardPrice": 2540,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "CA1328",
+        "onTimeRate": 90,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T3航站楼"
+    },
+    {
+        "airlineCompany": "中国国际航空股份有限公司",
+        "leaveBuilding": "T1航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 23:00:00",
+        "tkTime": "2020-05-28 19:40:00",
+        "lowestPriceInfo": {
+            "discount": 5.1,
+            "price": 1300,
+            "standardPrice": 2540,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "CA1302",
+        "onTimeRate": 93.33,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T3航站楼"
+    },
+    {
+        "airlineCompany": "中国东方航空股份有限公司",
+        "leaveBuilding": "T1航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 23:55:00",
+        "tkTime": "2020-05-28 20:50:00",
+        "lowestPriceInfo": {
+            "discount": 7,
+            "price": 1615,
+            "standardPrice": 2310,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "MU5282",
+        "onTimeRate": 86.67,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "中国联合航空有限公司",
+        "leaveBuilding": "T1航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-29 00:50:00",
+        "tkTime": "2020-05-28 21:50:00",
+        "lowestPriceInfo": {
+            "discount": 4.8,
+            "price": 1106,
+            "standardPrice": 2310,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "KN5900",
+        "onTimeRate": 100,
+        "arrivePort": "大兴国际机场",
+        "arriveBuilding": "航站楼"
+    },
+    {
+        "airlineCompany": "厦门航空有限公司",
+        "leaveBuilding": "T2航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 11:10:00",
+        "tkTime": "2020-05-28 08:00:00",
+        "lowestPriceInfo": {
+            "discount": 6.4,
+            "price": 1630,
+            "standardPrice": 1630,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "MF1003",
+        "onTimeRate": 100,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "厦门航空有限公司",
+        "leaveBuilding": "T2航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 12:10:00",
+        "tkTime": "2020-05-28 09:00:00",
+        "lowestPriceInfo": {
+            "discount": 7.4,
+            "price": 1880,
+            "standardPrice": 1880,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "MF1001",
+        "onTimeRate": 100,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "厦门航空有限公司",
+        "leaveBuilding": "T2航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 13:10:00",
+        "tkTime": "2020-05-28 10:00:00",
+        "lowestPriceInfo": {
+            "discount": 6.4,
+            "price": 1630,
+            "standardPrice": 1630,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "MF1023",
+        "onTimeRate": 96.67,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "厦门航空有限公司",
+        "leaveBuilding": "T2航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 15:05:00",
+        "tkTime": "2020-05-28 12:00:00",
+        "lowestPriceInfo": {
+            "discount": 6.4,
+            "price": 1630,
+            "standardPrice": 1630,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "MF1005",
+        "onTimeRate": 96.67,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "厦门航空有限公司",
+        "leaveBuilding": "T2航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 17:10:00",
+        "tkTime": "2020-05-28 14:00:00",
+        "lowestPriceInfo": {
+            "discount": 6.4,
+            "price": 1630,
+            "standardPrice": 1630,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "MF1011",
+        "onTimeRate": 100,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "厦门航空有限公司",
+        "leaveBuilding": "T2航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 19:10:00",
+        "tkTime": "2020-05-28 16:00:00",
+        "lowestPriceInfo": {
+            "discount": 6.4,
+            "price": 1630,
+            "standardPrice": 1630,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "MF1017",
+        "onTimeRate": 100,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
+    },
+    {
+        "airlineCompany": "海南航空股份有限公司",
+        "leaveBuilding": "T1航站楼",
+        "transferList": [],
+        "leavePort": "新白云国际机场",
+        "arTime": "2020-05-28 11:00:00",
+        "tkTime": "2020-05-28 08:00:00",
+        "lowestPriceInfo": {
+            "discount": 5.4,
+            "price": 1250,
+            "standardPrice": 2310,
+            "oilFee": 0,
+            "buildTax": 50
+        },
+        "arriveCity": "北京",
+        "leaveCity": "广州",
+        "flightNo": "HU7804",
+        "onTimeRate": 100,
+        "arrivePort": "首都国际机场",
+        "arriveBuilding": "T2航站楼"
     }
 ]
