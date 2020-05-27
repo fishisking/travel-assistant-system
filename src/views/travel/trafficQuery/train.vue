@@ -20,23 +20,20 @@
         ></el-date-picker>
       </el-form-item>
       <el-form-item>
+        <el-button type="primary" @click="onSubmit">查询</el-button>
+      </el-form-item><el-form-item>
         <el-checkbox
-          v-model="form.ishigh"
+          v-model="ishigh"
           label="仅高铁"
           class="ishigh"
-          :true-label="1"
-          :false-label="0"
         ></el-checkbox>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
       </el-form-item>
     </el-form>
     <hr />
-    <template>
+    <template v-if="dataList.length!==0">
       <el-table
-        v-if="dataList.length!==0"
-        :data="dataList"
+        
+        :data="ishigh?filteredDataList:dataList"
         v-loading="loading"
         element-loading-text="拼命加载中"
         element-loading-spinner="el-icon-loading"
@@ -68,40 +65,50 @@
         <el-table-column label="出发|到达时间" prop="departuretime">
           <template slot-scope="scope">
             <div class="flex-column">
-              <span class="flex-row time">
-                {{scope.row.departuretime}}
-              </span>
-              <span class="flex-row time" style="color:#999">
-                {{scope.row.arrivaltime}}
-              </span>
+              <span class="flex-row time">{{scope.row.departuretime}}</span>
+              <span class="flex-row time" style="color:#999">{{scope.row.arrivaltime}}</span>
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="历时" prop="costtime" sortable>
+        <el-table-column label="历时" prop="costtime">
           <template slot-scope="scope">
             <div class="flex-column">
               <el-tooltip placement="bottom" effect="light" :content="`${scope.row.distance}km`">
-                <span class="flex-row time">
-                {{scope.row.costtime}}
-              </span>
+                <span class="flex-row time">{{scope.row.costtime}}</span>
               </el-tooltip>
-              <span class="flex-row">
-                {{scope.row.day<=1?'当日到达':'次日到达'}}
-              </span>
+              <span class="flex-row">{{scope.row.day<=1?'当日到达':'次日到达'}}</span>
             </div>
           </template>
         </el-table-column>
         <el-table-column type="expand">
           <template slot-scope="props">
             <el-form label-position="left" inline class="demo-table-expand">
-              <el-form-item label="原价：" style="margin-right:25px;">
-                <span>{{ props.row.pricesw }}</span>
+              <el-form-item label="商务座/特等座票价：">
+                <span>{{ filterNull(props.row.pricesw) }}</span>
               </el-form-item>
-              <el-form-item label="折扣：" style="margin-right:25px;">
-                <span>{{ props.row.pricesw }}</span>
+              <el-form-item label="一等座票价：">
+                <span>{{ filterNull(props.row.priceyd) }}</span>
               </el-form-item>
-              <el-form-item label="折后价:" style="margin-right:25px;">
-                <span>{{props.row.pricesw}} </span>
+              <el-form-item label="二等座票价：">
+                <span>{{ filterNull(props.row.priceed) }}</span>
+              </el-form-item>
+              <el-form-item label="高级软卧票价：">
+                <span>{{ filterNull(props.row.pricegr1) }}</span>
+              </el-form-item>
+              <el-form-item label="软卧/一等卧票价：">
+                <span>{{ filterNull(props.row.pricerw1) }}</span>
+              </el-form-item>
+              <el-form-item label="动卧票价：">
+                <span>{{ filterNull(props.row.pricerw2) }}</span>
+              </el-form-item>
+              <el-form-item label="硬卧/二等卧票价：">
+                <span>{{ filterNull(props.row.priceyw1) }}</span>
+              </el-form-item>
+              <el-form-item label="软座票价：">
+                <span>{{ filterNull(props.row.pricerz) }}</span>
+              </el-form-item>
+              <el-form-item label="硬座票价：">
+                <span>{{ filterNull(props.row.priceyz) }}</span>
               </el-form-item>
             </el-form>
           </template>
@@ -125,8 +132,9 @@ export default {
         date: "2020-05-27",
         ishigh: 0
       },
+      ishigh:false,
       loading: false,
-      dataList: trains
+      dataList: []
     };
   },
   computed: {
@@ -135,9 +143,21 @@ export default {
     },
     cityCodeList() {
       return cityCode;
+    },
+    filteredDataList(){
+      return this.dataList.filter(item => {
+        if (item.type==='G') return item;
+      });
     }
   },
   methods: {
+    filterNull(val) {
+      if (val === "-") {
+        return val;
+      } else {
+        return "¥" + val;
+      }
+    },
     onSubmit() {
       this.loading = true;
       http.queryTrain(this.form).then(res => {
@@ -169,11 +189,11 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.time{
-      font-family: Tahoma;
-    font-size: 14px;
-    color: #333;
-    font-weight: bold;
+.time {
+  font-family: Tahoma;
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
 }
 .demo {
   height: 100%;
@@ -231,5 +251,11 @@ form {
   width: 60px;
   overflow: hidden;
   font-weight: 700;
+}
+.demo-table-expand {
+  color: #fc8302;
+  font-family: Arial, Simsun;
+  font-size: 12px;
+  background: #eef1f8;
 }
 </style>
