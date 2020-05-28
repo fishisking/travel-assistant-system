@@ -10,7 +10,7 @@
         <el-input style="width:100%;" placeholder="请输入账号ID" v-model="form.user_id"></el-input>
       </el-form-item>
       <el-form-item label="密码">
-        <el-input style="width:100%;" placeholder="请输入密码" v-model="form.password"></el-input>
+        <el-input style="width:100%;" placeholder="请输入密码" v-model="form.password" type="password"></el-input>
       </el-form-item>
       <el-form-item label="验证码">
         <el-input style="width:80%;" placeholder="请输入验证码" v-model="form.yzm"></el-input>

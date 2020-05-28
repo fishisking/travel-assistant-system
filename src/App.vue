@@ -137,7 +137,7 @@
     data() {
       return {
         keyWord:'',
-        isLogin:false,
+        isLogin:true,
         field:'',
         loginOnDialogVisible:false,
         registerDialogVisible:false,
@@ -146,7 +146,7 @@
         userStatus:{
           user_id:'',
           user_name:'',
-          permission:''
+          permission:'1'
         },
 
       }
