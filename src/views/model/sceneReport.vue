@@ -26,56 +26,51 @@
       <div class="half_container">
         <topRankInfo
           :info="sceneData.tableDataLists[0].tableData"
-          title="热门访问景点" :name="sceneData.tableDataLists[0].name"
+          title="热门访问景点"
+          :name="sceneData.tableDataLists[0].name"
           :selected="sceneData.params.selectedIndex===0"
           @handleCommand="handleCommand"
           :index="0"
         ></topRankInfo>
         <topRankInfo
           :info="sceneData.tableDataLists[1].tableData"
-          title="热门兴趣景点" :name="sceneData.tableDataLists[1].name"
+          title="热门兴趣景点"
+          :name="sceneData.tableDataLists[1].name"
           @handleCommand="handleCommand"
           :selected="sceneData.params.selectedIndex===1"
-          :index="1"  
+          :index="1"
         ></topRankInfo>
         <topRankInfo
           :info="sceneData.tableDataLists[2].tableData"
-          title="热门评论景点" :name="sceneData.tableDataLists[2].name"
+          title="热门评论景点"
+          :name="sceneData.tableDataLists[2].name"
           @handleCommand="handleCommand"
           :selected="sceneData.params.selectedIndex===2"
           :index="2"
         ></topRankInfo>
       </div>
       <div class="half_container">
-        <pie class="pic2" :data="sceneChartData" :name="sceneData.tableDataLists[sceneData.params.selectedIndex].name"></pie>
-        <bar class="pic2" :data="sceneChartData" :name="sceneData.tableDataLists[sceneData.params.selectedIndex].name"></bar>
+        <pie
+          class="pic2"
+          :data="sceneChartData"
+          :name="sceneData.tableDataLists[sceneData.params.selectedIndex].name"
+        ></pie>
+        <bar
+          class="pic2"
+          :data="sceneChartData"
+          :name="sceneData.tableDataLists[sceneData.params.selectedIndex].name"
+        ></bar>
       </div>
       <div class="header1">热门酒店信息</div>
       <div class="half_container">
         <topRankInfoHotel
           :info="hotelData.tableDataLists[0]"
-          title="热门访问酒店" :name="sceneData.tableDataLists[0].name"
-          @handleCommand="handleCommand"
-          :selected="sceneData.params.selectedIndex===0"
-          :index="0"
+          title="热门访问酒店"
+          @handleSelect="selectHotelChart"
+          :activeIndex="hotelActiveIndex"
         ></topRankInfoHotel>
-        <!-- <topRankInfoHotel
-          :info="sceneData.tableDataLists[2].tableData"
-          title="热门酒店" :name="sceneData.tableDataLists[1].name"
-          @handleCommand="handleCommand"
-          :selected="sceneData.params.selectedIndex===1"
-          :index="1"
-        ></topRankInfoHotel>
-        <topRankInfoHotel
-          :info="sceneData.tableDataLists[2].tableData"
-          title="热门酒店" :name="sceneData.tableDataLists[2].name"
-          @handleCommand="handleCommand"
-          :selected="sceneData.params.selectedIndex===2"
-          :index="2"
-        ></topRankInfoHotel> -->
-      </div>
-      <div class="half_container">
-        <hotel-bar class="pic2" :info="hotelData.tableDataLists[0]" :name="'123'"></hotel-bar>
+        <hotel-line class="pic2" v-if="hotelActiveIndex>=0" :index="hotelActiveIndex"></hotel-line>
+        <hotel-bar class="pic2" :info="hotelData.tableDataLists[0]" v-else></hotel-bar>
       </div>
     </div>
   </div>
@@ -91,6 +86,8 @@ import topRankInfoHotel from "@/components/analyze/topRankInfoHotel";
 import pie from "@/components/analyze/pie";
 import bar from "@/components/analyze/bar";
 import hotelBar from "@/components/analyze/hotelBar";
+import hotelLine from "@/components/analyze/line";
+import { HOTEL_LINES } from "@/Constant";
 export default {
   components: {
     report,
@@ -98,7 +95,8 @@ export default {
     pie,
     bar,
     topRankInfoHotel,
-    hotelBar
+    hotelBar,
+    hotelLine
   },
   data() {
     return {
@@ -107,74 +105,25 @@ export default {
         start: "",
         end: ""
       },
+      HOTEL_LINES,
+      hotelActiveIndex: -1,
       timeList: ["today", "week", "history"],
-      hotelData:{
-        params:{
-          selectedIndex: 0,   //被选择的是哪张表
+      hotelData: {
+        params: {
+          selectedIndex: 0 //被选择的是哪张表
         },
-        tableDataLists:[
+        tableDataLists: [
           {
-            index:0,
-            name:'visit',
-            data:[
-              {
-                name:'轻住·西湖音乐喷泉公寓酒店',
-                frequency:146,
-                compare:+3,
-              },
-              {
-                name:'轻住·杭州天逅酒店',
-                frequency:82,
-                compare:-5,
-              },
-              {
-                name:'杭州途悦民宿东站店',
-                frequency:67,
-                compare:+23,
-              },
-              {
-                name:'星程杭州钱江世纪城利华路酒店',
-                frequency:65,
-                compare:+2,
-              },
-              {
-                name:'Zchic杭州美梦轻居酒店',
-                frequency:58,
-                compare:-25,
-              },
-              {
-                name:'桔子杭州梦想小镇酒店',
-                frequency:56,
-                compare:+2,
-              },
-              {
-                name:'全季杭州三墩西湖科技园酒店',
-                frequency:52,
-                compare:+1,
-              },
-              {
-                name:'杭州钱江新城庆春广场亚朵酒店',
-                frequency:51,
-                compare:+7,
-              },
-              {
-                name:'全季杭州转塘美院酒店',
-                frequency:49,
-                compare:+12,
-              },
-              {
-                name:'美豪丽致酒店(杭州西溪湿地科技城店)',
-                frequency:45,
-                compare:-5,
-              }
-            ]
+            index: 0,
+            name: "visit",
+            data: HOTEL_LINES
           }
         ]
       },
       sceneData: {
-        params:{
-          selectedIndex: 0,   //被选择的是哪张表
-          timeIndex: 1, //被选择的时间期限
+        params: {
+          selectedIndex: 0, //被选择的是哪张表
+          timeIndex: 1 //被选择的时间期限
         },
         tableDataLists: [
           {
@@ -604,23 +553,28 @@ export default {
       }
     };
   },
-  computed:{
-    sceneChartData(){
-      const { selectedIndex,timeIndex } = this.sceneData.params;
-      let chartData = this.sceneData.tableDataLists[selectedIndex].tableData[this.timeList[timeIndex]];
+  computed: {
+    sceneChartData() {
+      const { selectedIndex, timeIndex } = this.sceneData.params;
+      let chartData = this.sceneData.tableDataLists[selectedIndex].tableData[
+        this.timeList[timeIndex]
+      ];
       return chartData;
     }
   },
   methods: {
-    handleCommand(index,type, data,info) {
-      if(index==this.sceneData.params.selectedIndex){
-        const timeIndex = this.timeList.indexOf(type)
-        this.sceneData.params.timeIndex = timeIndex
+    selectHotelChart(index) {
+      this.hotelActiveIndex = this.hotelActiveIndex === index ? -1 : index;
+    },
+    handleCommand(index, type, data, info) {
+      if (index == this.sceneData.params.selectedIndex) {
+        const timeIndex = this.timeList.indexOf(type);
+        this.sceneData.params.timeIndex = timeIndex;
       }
-      if(info==='draw'){
-        const timeIndex = this.timeList.indexOf(type)
-        this.sceneData.params.timeIndex = timeIndex
-        this.sceneData.params.selectedIndex = parseInt(index)
+      if (info === "draw") {
+        const timeIndex = this.timeList.indexOf(type);
+        this.sceneData.params.timeIndex = timeIndex;
+        this.sceneData.params.selectedIndex = parseInt(index);
       }
     },
     drawLine() {

@@ -780,3 +780,146 @@ export const flights = [{
         "arriveBuilding": "T2航站楼"
     }
 ]
+
+
+export const HOTEL_LINES = [{
+        name: "轻住·西湖音乐喷泉公寓酒店",
+        frequency: 146,
+        compare: +3,
+        lines: [
+            { date: '周一', value: '104' },
+            { date: '周二', value: '138' },
+            { date: '周三', value: '132' },
+            { date: '周四', value: '135' },
+            { date: '周五', value: '125' },
+            { date: '周六', value: '143' },
+            { date: '周日', value: '146' },
+        ]
+    },
+    {
+        name: "轻住·杭州天逅酒店",
+        frequency: 82,
+        compare: -5,
+        lines: [
+            { date: '周一', value: '114' },
+            { date: '周二', value: '148' },
+            { date: '周三', value: '122' },
+            { date: '周四', value: '115' },
+            { date: '周五', value: '116' },
+            { date: '周六', value: '87' },
+            { date: '周日', value: '82' },
+        ]
+    },
+    {
+        name: "杭州途悦民宿东站店",
+        frequency: 67,
+        compare: +23,
+        lines: [
+            { date: '周一', value: '72' },
+            { date: '周二', value: '57' },
+            { date: '周三', value: '66' },
+            { date: '周四', value: '76' },
+            { date: '周五', value: '56' },
+            { date: '周六', value: '44' },
+            { date: '周日', value: '67' },
+        ]
+    },
+    {
+        name: "星程杭州钱江世纪城利华路酒店",
+        frequency: 65,
+        compare: +2,
+        lines: [
+            { date: '周一', value: '105' },
+            { date: '周二', value: '120' },
+            { date: '周三', value: '90' },
+            { date: '周四', value: '81' },
+            { date: '周五', value: '72' },
+            { date: '周六', value: '63' },
+            { date: '周日', value: '65' },
+        ]
+    },
+    {
+        name: "Zchic杭州美梦轻居酒店",
+        frequency: 58,
+        compare: -25,
+        lines: [
+            { date: '周一', value: '93' },
+            { date: '周二', value: '100' },
+            { date: '周三', value: '85' },
+            { date: '周四', value: '87' },
+            { date: '周五', value: '86' },
+            { date: '周六', value: '83' },
+            { date: '周日', value: '58' },
+        ]
+    },
+    {
+        name: "桔子杭州梦想小镇酒店",
+        frequency: 56,
+        compare: +2,
+        lines: [
+            { date: '周一', value: '61' },
+            { date: '周二', value: '52' },
+            { date: '周三', value: '38' },
+            { date: '周四', value: '51' },
+            { date: '周五', value: '52' },
+            { date: '周六', value: '54' },
+            { date: '周日', value: '56' },
+        ]
+    },
+    {
+        name: "全季杭州三墩西湖科技园酒店",
+        frequency: 52,
+        compare: +1,
+        lines: [
+            { date: '周一', value: '88' },
+            { date: '周二', value: '122' },
+            { date: '周三', value: '132' },
+            { date: '周四', value: '70' },
+            { date: '周五', value: '125' },
+            { date: '周六', value: '51' },
+            { date: '周日', value: '52' },
+        ]
+    },
+    {
+        name: "杭州钱江新城庆春广场亚朵酒店",
+        frequency: 51,
+        compare: +7,
+        lines: [
+            { date: '周一', value: '72' },
+            { date: '周二', value: '55' },
+            { date: '周三', value: '62' },
+            { date: '周四', value: '52' },
+            { date: '周五', value: '48' },
+            { date: '周六', value: '44' },
+            { date: '周日', value: '51' },
+        ]
+    },
+    {
+        name: "全季杭州转塘美院酒店",
+        frequency: 49,
+        compare: +12,
+        lines: [
+            { date: '周一', value: '73' },
+            { date: '周二', value: '101' },
+            { date: '周三', value: '25' },
+            { date: '周四', value: '38' },
+            { date: '周五', value: '62' },
+            { date: '周六', value: '37' },
+            { date: '周日', value: '49' },
+        ]
+    },
+    {
+        name: "美豪丽致酒店(杭州西溪湿地科技城店)",
+        frequency: 45,
+        compare: -5,
+        lines: [
+            { date: '周一', value: '98' },
+            { date: '周二', value: '62' },
+            { date: '周三', value: '46' },
+            { date: '周四', value: '65' },
+            { date: '周五', value: '52' },
+            { date: '周六', value: '50' },
+            { date: '周日', value: '45' },
+        ]
+    }
+]

@@ -43,6 +43,7 @@ export default {
       const option = {
         legend: {
           show: true,
+          right:20,
           data: [
             {
               name: "访问次数",
@@ -56,9 +57,14 @@ export default {
             }
           ]
         },
-        tooltip: {},
+        tooltip:{},
         dataset: {
           source: this.chartData
+        },
+        title:{
+          text:'热门酒店访问次数与昨日变化柱状图',
+          show:true,
+          left:200
         },
         xAxis: {
           show: false,
@@ -93,5 +99,6 @@ export default {
 .pic3 {
   background: lighten(#fff4c3, 8%);
   border-top: 2px solid #ffb14b;
+  height:550px;
 }
 </style>

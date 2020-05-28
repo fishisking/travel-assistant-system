@@ -2,20 +2,11 @@
   <div>
     <div v-loading="loading">
       <div class="top_container" style="font-size:12px">
-        <div :class="{top_container_header:true,'top_container_header-darken':selected}">
+        <div :class="{top_container_header:true,'top_container_header-darken':true}">
           <span class="top_container_header_title">
-            <span>{{TIME_LIST[showList[activeIndex]]+title}}</span>
+            <span>{{'今日'+title}}</span>
             <span class="top_container_header_title bold">Top10</span>
           </span>
-          <el-dropdown @command="handleCommand" trigger="click">
-            <span class="el-dropdown-link" style="font-size:12px">
-              图表选项
-              <i class="el-icon-arrow-down el-icon--right"></i>
-            </span>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item command="draw" :disabled="selected">显示图表</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
         </div>
         <div class="top_container_tableTitle flex-row" style="justify-content:space-between">
           <span style="padding-left:42px;">名称</span>
@@ -33,7 +24,9 @@
             <span :class="{'bold':(index<3?true:false),'frequency':true}">{{item.frequency}}</span>
             <span
               :class="{'bold':(index<3?true:false),'radio':true}"
-            >{{`${item.compare>0?'+':''}${item.compare}`}}</span>
+            >{{`${item.compare>0?'+':''}${item.compare}`}}
+            </span>
+           <i :class="['open-icon',activeIndex===index?'el-icon-right':'el-icon-back']" @click="selectChart(index)"></i>
           </li>
         </ul>
       </div>
@@ -42,34 +35,29 @@
 </template>
 <script>
 import echarts from "echarts";
-import { TIME_LIST, HOTEL_CATEGORY } from "@/Constant";
+import { HOTEL_CATEGORY } from "@/Constant";
 export default {
-  props: ["info", "title", "index", "selected", "name"],
-  TIME_LIST,
+  props: ["info", "title", "activeIndex"],
   data() {
     return {
-      showList: ["history", "today", "week"],
-      activeIndex: 0,
-      option: null,
       loading: false,
-      chartVisible: false,
-      TIME_LIST,
-      HOTEL_CATEGORY
+      HOTEL_CATEGORY,
+      name:'visit'
     };
   },
   mounted(){
-    console.log(HOTEL_CATEGORY)
+
   },
   methods: {
-    handleCommand(command) {
-      const type = this.showList[this.activeIndex];
-      this.$emit("handleCommand", this.index, type, this.chartData, "draw");
+    selectChart(index){
+      this.$emit('handleSelect',index)
     }
   },
   computed: {
     total() {
       return this.info.data.length;
     },
+    
     chartData() {
       let chartData = this.info.data.slice(0);
       chartData.push({
@@ -198,5 +186,11 @@ a {
   padding-left: 20px;
   width: 132px;
   display: inline-block;
+}
+.open-icon{
+  position:relative;
+  right:35px;
+  color:#409EFF;
+  font-size:16px;
 }
 </style>

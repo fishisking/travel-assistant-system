@@ -53,7 +53,7 @@
                 <el-menu-item index="/model/userInformationRecord">用户信息</el-menu-item>
                 <el-menu-item index="/model/userPreference">用户兴趣度</el-menu-item>
                 <el-menu-item index="/model/userBehaviourRecord">用户行为记录</el-menu-item>
-                <el-menu-item index="/model/sceneReport">景点分析</el-menu-item>
+                <el-menu-item index="/model/sceneReport">出行监控</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="5">
@@ -137,7 +137,7 @@
     data() {
       return {
         keyWord:'',
-        isLogin:true,
+        isLogin:false,
         field:'',
         loginOnDialogVisible:false,
         registerDialogVisible:false,
