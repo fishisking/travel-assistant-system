@@ -14,10 +14,10 @@
         <span>出行人数趋势图</span>
         <span>
           <span style="font-size:14px;">时间单位:</span>
-          <el-select v-model="recentTripChart.measure">
-            <el-option value="year" label="年"></el-option>
-            <el-option value="month" label="月"></el-option>
-            <el-option value="week" label="日"></el-option>
+          <el-select v-model="measure">
+            <el-option :value="0" label="周"></el-option>
+            <el-option :value="1" label="月"></el-option>
+            <el-option :value="2" label="年"></el-option>
           </el-select>
         </span>
       </div>
@@ -87,7 +87,7 @@ import pie from "@/components/analyze/pie";
 import bar from "@/components/analyze/bar";
 import hotelBar from "@/components/analyze/hotelBar";
 import hotelLine from "@/components/analyze/line";
-import { HOTEL_LINES } from "@/Constant";
+import { HOTEL_LINES, NUMBER_TRIPS } from "@/Constant";
 export default {
   components: {
     report,
@@ -98,14 +98,16 @@ export default {
     hotelBar,
     hotelLine
   },
+  watch: {
+    tripData() {
+      this.drawLine();
+    }
+  },
   data() {
     return {
-      recentTripChart: {
-        measure: "month",
-        start: "",
-        end: ""
-      },
+      measure: 0,
       HOTEL_LINES,
+      NUMBER_TRIPS,
       hotelActiveIndex: -1,
       timeList: ["today", "week", "history"],
       hotelData: {
@@ -560,9 +562,15 @@ export default {
         this.timeList[timeIndex]
       ];
       return chartData;
+    },
+    tripData() {
+      return NUMBER_TRIPS[this.measure];
     }
   },
   methods: {
+    random(lower, upper) {
+      return Math.floor(Math.random() * (upper - lower + 1)) + lower;
+    },
     selectHotelChart(index) {
       this.hotelActiveIndex = this.hotelActiveIndex === index ? -1 : index;
     },
@@ -580,6 +588,7 @@ export default {
     drawLine() {
       // 基于准备好的dom，初始化echarts实例
       let myChart = echarts.init(this.$refs.myChart);
+      console.log(this.tripData);
       // 绘制图表
       const option = {
         tooltip: {
@@ -626,7 +635,8 @@ export default {
           {
             type: "category",
             boundaryGap: false,
-            data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+            data: this.tripData.data
+              .date /* ["周一", "周二", "周三", "周四", "周五", "周六", "周日"] */
           }
         ],
         yAxis: [
@@ -640,28 +650,28 @@ export default {
             type: "line",
             stack: "总量",
             areaStyle: {},
-            data: [120, 132, 101, 134, 90, 230, 210]
+            data: this.tripData.data.custom
           },
           {
             name: "景点出行人数",
             type: "line",
             stack: "总量",
             areaStyle: {},
-            data: [220, 182, 191, 234, 290, 330, 310]
+            data: this.tripData.data.scene
           },
           {
             name: "酒店出行人数",
             type: "line",
             stack: "总量",
             areaStyle: {},
-            data: [150, 232, 201, 154, 190, 330, 410]
+            data: this.tripData.data.hotel
           },
           {
             name: "出行总人数",
             type: "line",
             stack: "总量",
             areaStyle: {},
-            data: [320, 332, 301, 334, 390, 330, 320]
+            data: this.tripData.data.total
           }
         ]
       };
@@ -671,6 +681,12 @@ export default {
   },
   mounted() {
     this.drawLine();
+    var a = [];
+    for (let i = 1; i <= 31; i++) {
+      const temp = this.random(10,35)
+      a.push(temp);
+    }
+    console.log(a);
   }
 };
 </script>
