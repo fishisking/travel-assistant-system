@@ -5,10 +5,10 @@
       <div
         style=" display: flex;justify-content: space-between;margin-top:12px;margin-bottom:32px;"
       >
-        <report title="出行总人数" num="25" icon="el-icon-s-promotion" color="#409EFF"></report>
-        <report title="景点出行人数" num="15" icon="el-icon-location" color="#67C23A"></report>
-        <report title="酒店出行人数" num="13" icon="el-icon-school" color="#E6A23C"></report>
-        <report title="自定义地点出行人数" num="12" icon="el-icon-office-building" color="#909399"></report>
+        <report title="出行总人数" num="168" icon="el-icon-s-promotion" color="#409EFF" :change="-8"></report>
+        <report title="景点出行人数" num="51" icon="el-icon-location" color="#67C23A" :change="-8"></report>
+        <report title="酒店出行人数" num="101" icon="el-icon-school" color="#E6A23C" :change="+2"></report>
+        <report title="自定义地点出行人数" num="31" icon="el-icon-office-building" color="#909399" :change="-1"></report>
       </div>
       <div class="header1 flex-pic">
         <span>出行人数趋势图</span>
@@ -34,7 +34,7 @@
         ></topRankInfo>
         <topRankInfo
           :info="sceneData.tableDataLists[1].tableData"
-          title="热门兴趣景点"
+          title="热门兴趣景点类型"
           :name="sceneData.tableDataLists[1].name"
           @handleCommand="handleCommand"
           :selected="sceneData.params.selectedIndex===1"
@@ -87,7 +87,7 @@ import pie from "@/components/analyze/pie";
 import bar from "@/components/analyze/bar";
 import hotelBar from "@/components/analyze/hotelBar";
 import hotelLine from "@/components/analyze/line";
-import { HOTEL_LINES, NUMBER_TRIPS } from "@/Constant";
+import { HOTEL_LINES, NUMBER_TRIPS,SCENE_DATA } from "@/Constant";
 export default {
   components: {
     report,
@@ -127,431 +127,7 @@ export default {
           selectedIndex: 0, //被选择的是哪张表
           timeIndex: 1 //被选择的时间期限
         },
-        tableDataLists: [
-          {
-            index: 0,
-            name: "visit",
-            tableData: {
-              history: {
-                total: 232,
-                list: [
-                  {
-                    name: "西湖",
-                    value: 43
-                  },
-                  {
-                    name: "胡雪岩故居",
-                    value: 21
-                  },
-                  {
-                    name: "杭州野生动物园",
-                    value: 11
-                  },
-                  {
-                    name: "杭州乐园",
-                    value: 9
-                  },
-                  {
-                    name: "杭州动物园",
-                    value: 5
-                  },
-                  {
-                    name: "印象西湖",
-                    value: 4
-                  },
-                  {
-                    name: "杭州海底世界",
-                    value: 4
-                  },
-                  {
-                    name: "杭州烂苹果乐园",
-                    value: 3
-                  },
-                  {
-                    name: "千岛湖",
-                    value: 2
-                  },
-                  {
-                    name: "千岛湖中心湖",
-                    value: 1
-                  }
-                ]
-              },
-              today: {
-                total: 52,
-                list: [
-                  {
-                    name: "灵隐寺",
-                    value: 10
-                  },
-                  {
-                    name: "杭州岳王庙",
-                    value: 5
-                  },
-                  {
-                    name: "雷峰塔",
-                    value: 5
-                  },
-                  {
-                    name: "大明山",
-                    value: 4
-                  },
-                  {
-                    name: "杭州动物园",
-                    value: 3
-                  },
-                  {
-                    name: "杭州飞来峰",
-                    value: 2
-                  },
-                  {
-                    name: "杭州海底世界",
-                    value: 1
-                  },
-                  {
-                    name: "杭州烂苹果乐园",
-                    value: 1
-                  },
-                  {
-                    name: "千岛湖",
-                    value: 1
-                  },
-                  {
-                    name: "千岛湖中心湖",
-                    value: 1
-                  }
-                ]
-              },
-              week: {
-                total: 106,
-                list: [
-                  {
-                    name: "灵隐寺",
-                    value: 22
-                  },
-                  {
-                    name: "杭州岳王庙",
-                    value: 15
-                  },
-                  {
-                    name: "千岛湖",
-                    value: 11
-                  },
-                  {
-                    name: "雷峰塔",
-                    value: 7
-                  },
-                  {
-                    name: "大明山",
-                    value: 6
-                  },
-                  {
-                    name: "杭州动物园",
-                    value: 4
-                  },
-                  {
-                    name: "杭州飞来峰",
-                    value: 3
-                  },
-                  {
-                    name: "杭州海底世界",
-                    value: 3
-                  },
-                  {
-                    name: "杭州烂苹果乐园",
-                    value: 3
-                  },
-                  {
-                    name: "千岛湖中心湖",
-                    value: 1
-                  }
-                ]
-              }
-            }
-          },
-          {
-            index: 1,
-            name: "interest",
-            tableData: {
-              history: {
-                total: 232,
-                list: [
-                  {
-                    name: "西湖",
-                    value: 43
-                  },
-                  {
-                    name: "胡雪岩故居",
-                    value: 21
-                  },
-                  {
-                    name: "杭州野生动物园",
-                    value: 11
-                  },
-                  {
-                    name: "杭州乐园",
-                    value: 9
-                  },
-                  {
-                    name: "杭州动物园",
-                    value: 5
-                  },
-                  {
-                    name: "印象西湖",
-                    value: 4
-                  },
-                  {
-                    name: "杭州海底世界",
-                    value: 4
-                  },
-                  {
-                    name: "杭州烂苹果乐园",
-                    value: 3
-                  },
-                  {
-                    name: "千岛湖",
-                    value: 2
-                  },
-                  {
-                    name: "千岛湖中心湖",
-                    value: 1
-                  }
-                ]
-              },
-              today: {
-                total: 32,
-                list: [
-                  {
-                    name: "灵隐寺",
-                    value: 10
-                  },
-                  {
-                    name: "杭州岳王庙",
-                    value: 5
-                  },
-                  {
-                    name: "雷峰塔",
-                    value: 5
-                  },
-                  {
-                    name: "大明山",
-                    value: 4
-                  },
-                  {
-                    name: "杭州动物园",
-                    value: 3
-                  },
-                  {
-                    name: "杭州飞来峰",
-                    value: 2
-                  },
-                  {
-                    name: "杭州海底世界",
-                    value: 1
-                  },
-                  {
-                    name: "杭州烂苹果乐园",
-                    value: 1
-                  },
-                  {
-                    name: "千岛湖",
-                    value: 1
-                  },
-                  {
-                    name: "千岛湖中心湖",
-                    value: 1
-                  }
-                ]
-              },
-              week: {
-                total: 66,
-                list: [
-                  {
-                    name: "灵隐寺",
-                    value: 22
-                  },
-                  {
-                    name: "杭州岳王庙",
-                    value: 15
-                  },
-                  {
-                    name: "千岛湖",
-                    value: 11
-                  },
-                  {
-                    name: "雷峰塔",
-                    value: 7
-                  },
-                  {
-                    name: "大明山",
-                    value: 6
-                  },
-                  {
-                    name: "杭州动物园",
-                    value: 4
-                  },
-                  {
-                    name: "杭州飞来峰",
-                    value: 3
-                  },
-                  {
-                    name: "杭州海底世界",
-                    value: 3
-                  },
-                  {
-                    name: "杭州烂苹果乐园",
-                    value: 3
-                  },
-                  {
-                    name: "千岛湖中心湖",
-                    value: 1
-                  }
-                ]
-              }
-            }
-          },
-          {
-            index: 2,
-            name: "comment",
-            tableData: {
-              history: {
-                total: 232,
-                list: [
-                  {
-                    name: "西湖",
-                    value: 43
-                  },
-                  {
-                    name: "胡雪岩故居",
-                    value: 21
-                  },
-                  {
-                    name: "杭州野生动物园",
-                    value: 11
-                  },
-                  {
-                    name: "杭州乐园",
-                    value: 9
-                  },
-                  {
-                    name: "杭州动物园",
-                    value: 5
-                  },
-                  {
-                    name: "印象西湖",
-                    value: 4
-                  },
-                  {
-                    name: "杭州海底世界",
-                    value: 4
-                  },
-                  {
-                    name: "杭州烂苹果乐园",
-                    value: 3
-                  },
-                  {
-                    name: "千岛湖",
-                    value: 2
-                  },
-                  {
-                    name: "千岛湖中心湖",
-                    value: 1
-                  }
-                ]
-              },
-              today: {
-                total: 32,
-                list: [
-                  {
-                    name: "灵隐寺",
-                    value: 10
-                  },
-                  {
-                    name: "杭州岳王庙",
-                    value: 5
-                  },
-                  {
-                    name: "雷峰塔",
-                    value: 5
-                  },
-                  {
-                    name: "大明山",
-                    value: 4
-                  },
-                  {
-                    name: "杭州动物园",
-                    value: 3
-                  },
-                  {
-                    name: "杭州飞来峰",
-                    value: 2
-                  },
-                  {
-                    name: "杭州海底世界",
-                    value: 1
-                  },
-                  {
-                    name: "杭州烂苹果乐园",
-                    value: 1
-                  },
-                  {
-                    name: "千岛湖",
-                    value: 1
-                  },
-                  {
-                    name: "千岛湖中心湖",
-                    value: 1
-                  }
-                ]
-              },
-              week: {
-                total: 106,
-                list: [
-                  {
-                    name: "灵隐寺",
-                    value: 22
-                  },
-                  {
-                    name: "杭州岳王庙",
-                    value: 15
-                  },
-                  {
-                    name: "千岛湖",
-                    value: 11
-                  },
-                  {
-                    name: "雷峰塔",
-                    value: 7
-                  },
-                  {
-                    name: "大明山",
-                    value: 6
-                  },
-                  {
-                    name: "杭州动物园",
-                    value: 4
-                  },
-                  {
-                    name: "杭州飞来峰",
-                    value: 3
-                  },
-                  {
-                    name: "杭州海底世界",
-                    value: 3
-                  },
-                  {
-                    name: "杭州烂苹果乐园",
-                    value: 3
-                  },
-                  {
-                    name: "千岛湖中心湖",
-                    value: 1
-                  }
-                ]
-              }
-            }
-          }
-        ]
+        tableDataLists: SCENE_DATA
       }
     };
   },
@@ -588,7 +164,6 @@ export default {
     drawLine() {
       // 基于准备好的dom，初始化echarts实例
       let myChart = echarts.init(this.$refs.myChart);
-      console.log(this.tripData);
       // 绘制图表
       const option = {
         tooltip: {
@@ -682,8 +257,8 @@ export default {
   mounted() {
     this.drawLine();
     var a = [];
-    for (let i = 1; i <= 31; i++) {
-      const temp = this.random(10,35)
+    for (let i = 1; i <= 12; i++) {
+      const temp = this.random(20,30)*30
       a.push(temp);
     }
     console.log(a);
