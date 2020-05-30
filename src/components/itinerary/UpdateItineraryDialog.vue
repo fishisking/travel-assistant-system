@@ -97,9 +97,6 @@
         if(result.success){
           success(this)
           this.onCancel()
-          setTimeout(()=>{
-            this.$router.go(0)
-          }, 1500);
         }else{
           danger(this)
         }

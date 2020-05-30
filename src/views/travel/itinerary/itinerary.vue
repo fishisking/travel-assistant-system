@@ -280,7 +280,7 @@
 
     </div>
     <delete-itinerary :dialogVisible="deleteItineraryDialogVisible" @on-cancel="deleteItineraryDialogVisible = false" @on-confirm="confirmDeleteItinerary" v-if="itinerarys.length!=0" :data="itinerarys"></delete-itinerary>
-    <update-itinerary :dialogVisible="updateItineraryDialogVisible" @on-cancel="updateItineraryDialogVisible = false" :data="itinerarys" v-if="itinerarys.length!=0"></update-itinerary>
+    <update-itinerary :dialogVisible="updateItineraryDialogVisible" @on-cancel="confirmUpdateItinerary" :data="itinerarys" v-if="itinerarys.length!=0"></update-itinerary>
     <scene-detail-dialog :dialogVisible="sceneDetailDialogVisible" @on-cancel="sceneDetailDialogVisible = false" :scene_id="scene_id" ></scene-detail-dialog>
     <detail-dialog :dialogVisible="detailDialogVisible" :data="data" @on-close="detailDialogVisible=false" :type="currentType"></detail-dialog>
     <condition-filter :dialogVisible="conditionFilterVisible"  @on-close="conditionFilterVisible=false" @on-submit="getRequiredHotelRecommendation"></condition-filter>
@@ -434,17 +434,9 @@
         switchhotelDescriptionVisible(){
           this.hotelDescriptionVisible = (this.hotelDescriptionVisible)?false:true
         },
-        confirmUpdateItinerary(val){
-          let params = []
-          val.forEach((a)=>{
-            params.push({
-              accord_id:a,
-              user_id:this.$store.state.user_id
-            })
-          })
-          //请求接口 删除行程项列表 参数用户Id和对应id
-          //根据回调值 success(this);danger(this)
-          this.deleteItineraryDialogVisible = false
+        confirmUpdateItinerary(){
+          this.updateItineraryDialogVisible = false
+          this.reload()
         },
         async confirmDeleteItinerary(val){
           let params = []
@@ -459,9 +451,7 @@
           if(result.success){
             success(this)
             this.deleteItineraryDialogVisible = false
-            setTimeout(()=>{
-              this.$router.go(0)
-            }, 1500);
+            this.reload()
           }else{
             danger(this)
           }
@@ -496,7 +486,9 @@
           //console.log(this.sceneData)
           this.loadSceneDetailData()
           this.loadCustomPlaceDetailData()
-          this.loadHotelData()
+          if(this.hotelData.length>0){
+            this.loadHotelData()
+          }
         },
         switchScene_type(type_id){
           return switchScene_type(type_id)
@@ -505,7 +497,7 @@
           let hotel = await http.getHotelDetailByName(this.hotelData[0].destination_name,'杭州');
           hotel = hotel[0]
           hotel.imageUrls = hotel.imageUrls.slice(0,5)
-          this.hotelDetail = [].concat([hotel])
+          this.hotelDetail = [].concat([hotel]) 
         }, //调酒店API 参数酒店名称 获取酒店信息
         async loadSceneDetailData(){
           // 遍历this.sce  将scene_id放进去neData
@@ -570,9 +562,7 @@
           this.currentType = type
         }
       },
-
-
-
+      inject:['reload'],
       watch:{
         async selectedDate(newVal,oldVal){
           this.$store.state.selectedDate = newVal
@@ -593,13 +583,14 @@
           }
         }
       },
-      mounted(){
+      async mounted(){
         this.$store.state.selectedDate = this.selectedDate
-        this.getItinerarys()
+        await this.getItinerarys()
         this.getWeather(this.selectedDate)
-
         this.getSceneRecommendation()
-        this.getHotelRecommendation()
+        if(this.hotelData.length===0){
+          this.getHotelRecommendation()
+        }
       }
     }
 </script>

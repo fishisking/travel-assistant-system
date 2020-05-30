@@ -67,7 +67,7 @@
       methods:{
         addItinerary(item,type_id){
           item.type_id= type_id
-          this.$router.push({path:'/travel/itinerary/add',query:item})
+          this.$router.push({name:'addItinerary',params:item})
         },
         cancel(){
           this.$emit('on-close')

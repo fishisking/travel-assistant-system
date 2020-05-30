@@ -60,7 +60,6 @@ export default {
     getHotelDetailByName(kw, city) {
         let params = initParams('hotel')
         params.kw = kw
-        params.city = city
         return new Promise((resolve, reject) => {
             axios.post('/hotel', '', {
                     params

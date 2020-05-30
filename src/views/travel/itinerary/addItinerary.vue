@@ -380,11 +380,11 @@
           this.form.destination_date = this.$store.state.selectedDate.format('YYYY-MM-DD')
         }
         this.form.destination_date = new moment().format('YYYY-MM-DD')
-        console.log(this.form)
       }
     },
     mounted(){
       this.initParams()
+      console.log(this.$route)
       if(this.$route.params){
           if(this.$route.params.type_id==1){
             this.form.type_id='1'
