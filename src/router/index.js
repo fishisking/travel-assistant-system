@@ -22,117 +22,121 @@ import coachQuery from '@/views/travel/trafficQuery/coach'
 import trainQuery from '@/views/travel/trafficQuery/train'
 import trafficQuery from '@/views/travel/trafficQuery/index'
 import sceneReport from '@/views/model/sceneReport'
+import sceneManage from '@/views/model/sceneManage'
 Vue.use(Router)
 export default new Router({
-  mode: 'history',
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home,
+    mode: 'history',
+    routes: [{
+            path: '/',
+            name: 'home',
+            component: Home,
 
-    },
-    {
-      path: '/home',
-      name: 'home',
-      component: Home,
-    },
-    {
-      path: '/search/:field/:kw',
-      name: 'search',
-      component: Search
-    },
-    {
-      path:'/travel',
-      redirect:'/travel/itinerary'
-    },
-    {
-      path:'/travel/itinerary',
-      name:'itinerary',
-      component:itinerary
-    },
-    {
-      path:'/travel/itinerary/add',
-      name:'addItinerary',
-      component:addItinerary
-    },
-    {
-      path:'/travel/myCustomPlace',
-      component:myCustomPlace
-    },
-    {
-      path:'/travel/myCustomPlace/add',
-      component:addMyCustomPlace
-    },
-    {
-      path:'/travel/myCustomPlace/update',
-      component:updateMyCustomPlace
-    },
-    {
-      path:'/travel/placeCollection',
-      component:placeCollection
-    },
-    {
-      path:'/travel/flightQuery',
-      component:flightQuery
-    },
-    {
-      path:'/travel/trafficQuery',
-      component:trafficQuery,
-      children:[
-        {path:'',component:flightQuery},
-        {path:'coach',component:coachQuery},
-        {path:'flight',component:flightQuery},
-        {path:'train',component:trainQuery},
-      ]
-    },
-    {
-      path:'/log/findLog',
-      component:findLog
-    },
-    {
-      path:'/log/logDetail/:log_id',
-      name:'logDetail',
-      component:logDetail
-    },
-    {
-      path:'/log/comment/:log_id',
-      name:'comment',
-      component:comment
-    },
-    {
-      path:'/log/logCollection',
-      name:'logCollection',
-      component:logCollection
-    },
-    {
-      path:'/log/searchLog',
-      name:'searchLog',
-      component:searchLog
-    },
-    {
-      path:'/model/userPreference',
-      name:'userPreference',
-      component:userPreference
-    },
-    {
-      path:'/model/userBehaviourRecord',
-      name:'userBehaviourRecord',
-      component:userBehaviourRecord
-    },
-    {
-      path:'/user/userInformation',
-      name:'userInformation',
-      component:userInformation
-    },
-    {
-      path:'/model/userInformationRecord',
-      component:userInformationRecord
-    },
-    {
-      path:'/model/sceneReport',
-      component:sceneReport
-    },
+        },
+        {
+            path: '/home',
+            name: 'home',
+            component: Home,
+        },
+        {
+            path: '/search/:field/:kw',
+            name: 'search',
+            component: Search
+        },
+        {
+            path: '/travel',
+            redirect: '/travel/itinerary'
+        },
+        {
+            path: '/travel/itinerary',
+            name: 'itinerary',
+            component: itinerary
+        },
+        {
+            path: '/travel/itinerary/add',
+            name: 'addItinerary',
+            component: addItinerary
+        },
+        {
+            path: '/travel/myCustomPlace',
+            component: myCustomPlace
+        },
+        {
+            path: '/travel/myCustomPlace/add',
+            component: addMyCustomPlace
+        },
+        {
+            path: '/travel/myCustomPlace/update',
+            component: updateMyCustomPlace
+        },
+        {
+            path: '/travel/placeCollection',
+            component: placeCollection
+        },
+        {
+            path: '/travel/flightQuery',
+            component: flightQuery
+        },
+        {
+            path: '/travel/trafficQuery',
+            component: trafficQuery,
+            children: [
+                { path: '', component: flightQuery },
+                { path: 'coach', component: coachQuery },
+                { path: 'flight', component: flightQuery },
+                { path: 'train', component: trainQuery },
+            ]
+        },
+        {
+            path: '/model/sceneManage',
+            component: sceneManage
+        },
+        {
+            path: '/log/findLog',
+            component: findLog
+        },
+        {
+            path: '/log/logDetail/:log_id',
+            name: 'logDetail',
+            component: logDetail
+        },
+        {
+            path: '/log/comment/:log_id',
+            name: 'comment',
+            component: comment
+        },
+        {
+            path: '/log/logCollection',
+            name: 'logCollection',
+            component: logCollection
+        },
+        {
+            path: '/log/searchLog',
+            name: 'searchLog',
+            component: searchLog
+        },
+        {
+            path: '/model/userPreference',
+            name: 'userPreference',
+            component: userPreference
+        },
+        {
+            path: '/model/userBehaviourRecord',
+            name: 'userBehaviourRecord',
+            component: userBehaviourRecord
+        },
+        {
+            path: '/user/userInformation',
+            name: 'userInformation',
+            component: userInformation
+        },
+        {
+            path: '/model/userInformationRecord',
+            component: userInformationRecord
+        },
+        {
+            path: '/model/sceneReport',
+            component: sceneReport
+        },
 
-  ]
+    ]
 })
