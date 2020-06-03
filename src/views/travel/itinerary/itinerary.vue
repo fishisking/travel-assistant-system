@@ -4,7 +4,7 @@
     <el-button @click="addItinerary">增加行程</el-button>
     <el-button @click="updateItineraryDialogVisible = true" v-bind:disabled="itinerarys.length==0">修改行程</el-button>
     <el-button @click="deleteItineraryDialogVisible = true" v-bind:disabled="itinerarys.length==0">删除行程</el-button>
-    <el-button @click="deleteItineraryDialogVisible = true" v-bind:disabled="itinerarys.length==0">历史行程记录</el-button>
+    <el-button @click="handleHistoryItinerary">历史行程记录</el-button>
     <div v-show="dateDialogVisible">
       <a-alert :message="`你选择的日期是: ${selectedDate.format('YYYY-MM-DD')}`" />
       <a-calendar @select="selectDate" style="width: 100% " v-model="selectedDate" @change="getEventsInCalendar">
@@ -361,7 +361,9 @@
           }else{
             return item.destination_date
           }
-
+        },
+        handleHistoryItinerary(){
+          this.$router.push('/travel/historys')
         },
         openSceneDetail(scene_id){
           this.sceneDetailDialogVisible = true

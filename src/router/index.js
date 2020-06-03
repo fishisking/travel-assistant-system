@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/views/home'
 import Search from '@/views/search'
 import itinerary from '@/views/travel/itinerary/itinerary'
+import historys from '@/views/travel/itinerary/historyItinerarys'
 import addItinerary from '@/views/travel/itinerary/addItinerary'
 import myCustomPlace from '@/views/travel/myCustomPlace/myCustomPlace'
 import updateMyCustomPlace from '@/views/travel/myCustomPlace/updateMyCustomPlace'
@@ -85,6 +86,10 @@ export default new Router({
                 { path: 'flight', component: flightQuery },
                 { path: 'train', component: trainQuery },
             ]
+        },
+        {
+            path: '/travel/historys',
+            component: historys
         },
         {
             path: '/model/sceneManage',
