@@ -1,7 +1,7 @@
 <template>
   <div>
     <tool-bar :addButton="false" :updateButton="false" :currentRow="row" @on-delete="handleDelete" @get-filters="handleFilter"></tool-bar>
-    <el-table :data="data" style="width: 100%" @row-click="handle" highlight-current-row>
+    <el-table :data="filterData" style="width: 100%" @row-click="handle" highlight-current-row>
       <el-table-column type="index" width="40"></el-table-column>
       <el-table-column prop="scene_name" label="景点名称"></el-table-column>
       <el-table-column prop="scene_level" label="景区等级"></el-table-column>
@@ -15,8 +15,8 @@
         <template slot-scope="scope">
           <el-switch
             style="display: block"
-            :active-value=1
-            :inactive-value=0
+            :active-value="1"
+            :inactive-value="0"
             v-model="scope.row.is_available"
             active-color="#13ce66"
             inactive-color="#ff4949"
@@ -46,7 +46,9 @@ export default {
   },
   computed:{
       filterData(){
-          return this.data;
+          return this.data.filter((item)=>{
+            return item.scene_name.indexOf(this.kw)>=0;
+          });
       }
   },
   methods: {
@@ -73,7 +75,7 @@ export default {
         })
     },
     handleFilter(val){
-        console.log(val)
+        this.kw = val;
     }
   },
   mounted() {
